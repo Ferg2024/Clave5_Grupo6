@@ -86,7 +86,7 @@ namespace Clave5_Grupo6
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.White;
-            this.lblPassword.Location = new System.Drawing.Point(36, 68);
+            this.lblPassword.Location = new System.Drawing.Point(34, 68);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(90, 18);
             this.lblPassword.TabIndex = 7;
@@ -109,7 +109,7 @@ namespace Clave5_Grupo6
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(405, 178);
+            this.ClientSize = new System.Drawing.Size(405, 175);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.txtPassword);
