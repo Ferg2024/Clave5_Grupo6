@@ -11,22 +11,23 @@ using MySql.Data.MySqlClient;
 
 namespace Clave5_Grupo6
 {
-    public partial class Form1 : Form
+    public partial class FormClientes : Form
     {
         //Creacion de variables estaticas de clase 
 
-        static string Servidor = "localhost"; //Nombre o ip del servidor de MySQL
-        static string BD = "clave5_grupodetrabajodb6"; //Nombre de la base de datos
+        static string Servidor = "localhost"; //Nombre del servidor de MySQL
+        static string BD = "clave5_grupodetrabajodb6"; //Nombre de la base de datos 
         static string Usuario = "root"; //Usuario de acceso a MySQL
         static string Paswoord = "root"; //Contraseña de usuario de acceso a MySQL
 
          //Crearemos la cadena de conexión concatenando las variables
 
         static string cadenaConexion = "Database=" + BD + "; Data Source=" + Servidor + "; User Id = " + Usuario + "; Password=" + Paswoord + "";
+
         //Instancia para conexión a MySQL, recibe la cadena de conexión
         static MySqlConnection conexionBD = new MySqlConnection(cadenaConexion);
 
-        public Form1()
+        public FormClientes()
         {
             InitializeComponent();
         }
@@ -53,5 +54,6 @@ namespace Clave5_Grupo6
                 conexionBD.Close(); // se cierra la conexion
             }
         }
+
     }
 }
