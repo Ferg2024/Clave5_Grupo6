@@ -65,7 +65,7 @@ namespace Clave5_Grupo6
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(150, 78);
+            this.txtPassword.Location = new System.Drawing.Point(150, 68);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -86,7 +86,7 @@ namespace Clave5_Grupo6
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.ForeColor = System.Drawing.Color.White;
-            this.lblPassword.Location = new System.Drawing.Point(35, 78);
+            this.lblPassword.Location = new System.Drawing.Point(36, 68);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(90, 18);
             this.lblPassword.TabIndex = 7;

@@ -43,7 +43,6 @@ namespace Clave5_Grupo6
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
-
         }
     }
 }
