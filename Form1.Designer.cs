@@ -36,7 +36,7 @@ namespace Clave5_Grupo6
             // 
             this.button1.Location = new System.Drawing.Point(235, 81);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(308, 175);
+            this.button1.Size = new System.Drawing.Size(391, 26);
             this.button1.TabIndex = 0;
             this.button1.Text = "PRUEBA";
             this.button1.UseVisualStyleBackColor = true;
