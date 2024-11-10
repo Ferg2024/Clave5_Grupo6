@@ -16,5 +16,10 @@ namespace Clave5_Grupo6
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
