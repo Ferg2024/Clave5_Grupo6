@@ -35,7 +35,7 @@ namespace Clave5_Grupo6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(675, 394);
             this.Name = "Form1";
             this.Text = "Clave5";
             this.ResumeLayout(false);
