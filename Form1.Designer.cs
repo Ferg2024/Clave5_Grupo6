@@ -30,7 +30,7 @@ namespace Clave5_Grupo6
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBD = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,30 +42,24 @@ namespace Clave5_Grupo6
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.InfoSalas = new System.Windows.Forms.DataGridView();
             this.cmbSalas = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnAsistentes = new System.Windows.Forms.Button();
-            this.txtAsistentes = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTelefonos = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCorreoel = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtClienteNombre = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
             this.numeric3 = new System.Windows.Forms.NumericUpDown();
             this.numeric2 = new System.Windows.Forms.NumericUpDown();
             this.numeric1 = new System.Windows.Forms.NumericUpDown();
@@ -78,15 +72,33 @@ namespace Clave5_Grupo6
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRegistros = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnPersonas = new System.Windows.Forms.Button();
+            this.txtPersonas = new System.Windows.Forms.TextBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.Fecha = new System.Windows.Forms.DateTimePicker();
+            this.HoraInicio = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.HoraFin = new System.Windows.Forms.DateTimePicker();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.btnReserva = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InfoSalas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -94,18 +106,30 @@ namespace Clave5_Grupo6
             ((System.ComponentModel.ISupportInitialize)(this.numeric2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnBD
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(547, 580);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Conexión";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBD.BackColor = System.Drawing.Color.Purple;
+            this.btnBD.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBD.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnBD.Location = new System.Drawing.Point(154, 300);
+            this.btnBD.Name = "btnBD";
+            this.btnBD.Size = new System.Drawing.Size(95, 37);
+            this.btnBD.TabIndex = 0;
+            this.btnBD.Text = "Conexión";
+            this.btnBD.UseVisualStyleBackColor = false;
+            this.btnBD.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -227,33 +251,36 @@ namespace Clave5_Grupo6
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Indigo;
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.InfoSalas);
             this.groupBox2.Controls.Add(this.cmbSalas);
             this.groupBox2.Controls.Add(this.pictureBox2);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Cornsilk;
-            this.groupBox2.Location = new System.Drawing.Point(12, 275);
+            this.groupBox2.Location = new System.Drawing.Point(6, 284);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(286, 263);
+            this.groupBox2.Size = new System.Drawing.Size(342, 286);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Salas";
             // 
-            // dataGridView1
+            // InfoSalas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 151);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(272, 106);
-            this.dataGridView1.TabIndex = 10;
+            this.InfoSalas.AllowUserToAddRows = false;
+            this.InfoSalas.AllowUserToDeleteRows = false;
+            this.InfoSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InfoSalas.Location = new System.Drawing.Point(8, 151);
+            this.InfoSalas.Name = "InfoSalas";
+            this.InfoSalas.ReadOnly = true;
+            this.InfoSalas.Size = new System.Drawing.Size(322, 125);
+            this.InfoSalas.TabIndex = 10;
             // 
             // cmbSalas
             // 
             this.cmbSalas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbSalas.FormattingEnabled = true;
-            this.cmbSalas.Location = new System.Drawing.Point(136, 66);
+            this.cmbSalas.Location = new System.Drawing.Point(163, 66);
             this.cmbSalas.Name = "cmbSalas";
             this.cmbSalas.Size = new System.Drawing.Size(144, 27);
             this.cmbSalas.TabIndex = 9;
@@ -265,7 +292,7 @@ namespace Clave5_Grupo6
             this.pictureBox2.InitialImage = null;
             this.pictureBox2.Location = new System.Drawing.Point(8, 26);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(109, 80);
+            this.pictureBox2.Size = new System.Drawing.Size(130, 83);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
@@ -274,7 +301,7 @@ namespace Clave5_Grupo6
             // 
             this.label7.AutoSize = true;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label7.Location = new System.Drawing.Point(97, 127);
+            this.label7.Location = new System.Drawing.Point(125, 122);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 21);
             this.label7.TabIndex = 2;
@@ -284,90 +311,29 @@ namespace Clave5_Grupo6
             // 
             this.label8.AutoSize = true;
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Location = new System.Drawing.Point(136, 26);
+            this.label8.Location = new System.Drawing.Point(163, 26);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(144, 21);
             this.label8.TabIndex = 0;
             this.label8.Text = "Seleccione una sala";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.DarkMagenta;
-            this.groupBox3.Controls.Add(this.btnAsistentes);
-            this.groupBox3.Controls.Add(this.txtAsistentes);
-            this.groupBox3.Controls.Add(this.pictureBox3);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.Cornsilk;
-            this.groupBox3.Location = new System.Drawing.Point(356, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(286, 119);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Asistentes";
-            // 
-            // btnAsistentes
-            // 
-            this.btnAsistentes.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnAsistentes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAsistentes.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAsistentes.Location = new System.Drawing.Point(154, 87);
-            this.btnAsistentes.Name = "btnAsistentes";
-            this.btnAsistentes.Size = new System.Drawing.Size(76, 26);
-            this.btnAsistentes.TabIndex = 10;
-            this.btnAsistentes.Text = "Ingresar";
-            this.btnAsistentes.UseVisualStyleBackColor = false;
-            // 
-            // txtAsistentes
-            // 
-            this.txtAsistentes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAsistentes.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAsistentes.Location = new System.Drawing.Point(154, 55);
-            this.txtAsistentes.Multiline = true;
-            this.txtAsistentes.Name = "txtAsistentes";
-            this.txtAsistentes.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtAsistentes.Size = new System.Drawing.Size(76, 26);
-            this.txtAsistentes.TabIndex = 9;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(8, 26);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(83, 74);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 8;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(121, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 21);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Ingrese la cantidad";
-            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.DarkViolet;
             this.groupBox4.Controls.Add(this.pictureBox4);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.txtTelefonos);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.txtCorreoel);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.txtApellido);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.txtClienteNombre);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Cornsilk;
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(286, 224);
+            this.groupBox4.Size = new System.Drawing.Size(324, 256);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Personales";
@@ -377,92 +343,92 @@ namespace Clave5_Grupo6
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.InitialImage = null;
-            this.pictureBox4.Location = new System.Drawing.Point(221, 0);
+            this.pictureBox4.Location = new System.Drawing.Point(128, 26);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(65, 44);
+            this.pictureBox4.Size = new System.Drawing.Size(74, 47);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
             // 
-            // textBox1
+            // txtTelefonos
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(107, 183);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox1.Size = new System.Drawing.Size(173, 18);
-            this.textBox1.TabIndex = 7;
+            this.txtTelefonos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefonos.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefonos.Location = new System.Drawing.Point(128, 218);
+            this.txtTelefonos.Multiline = true;
+            this.txtTelefonos.Name = "txtTelefonos";
+            this.txtTelefonos.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtTelefonos.Size = new System.Drawing.Size(173, 17);
+            this.txtTelefonos.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(11, 182);
+            this.label5.Location = new System.Drawing.Point(32, 217);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 21);
             this.label5.TabIndex = 6;
             this.label5.Text = "Teléfono: ";
             // 
-            // textBox2
+            // txtCorreoel
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(107, 142);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox2.Size = new System.Drawing.Size(173, 18);
-            this.textBox2.TabIndex = 5;
+            this.txtCorreoel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCorreoel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreoel.Location = new System.Drawing.Point(128, 177);
+            this.txtCorreoel.Multiline = true;
+            this.txtCorreoel.Name = "txtCorreoel";
+            this.txtCorreoel.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtCorreoel.Size = new System.Drawing.Size(173, 17);
+            this.txtCorreoel.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label9.Location = new System.Drawing.Point(11, 141);
+            this.label9.Location = new System.Drawing.Point(32, 176);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 21);
             this.label9.TabIndex = 4;
             this.label9.Text = "Correo:";
             // 
-            // textBox3
+            // txtApellido
             // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(107, 99);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox3.Size = new System.Drawing.Size(173, 18);
-            this.textBox3.TabIndex = 3;
+            this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtApellido.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.Location = new System.Drawing.Point(128, 134);
+            this.txtApellido.Multiline = true;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtApellido.Size = new System.Drawing.Size(173, 17);
+            this.txtApellido.TabIndex = 3;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label10.Location = new System.Drawing.Point(11, 98);
+            this.label10.Location = new System.Drawing.Point(32, 133);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 21);
             this.label10.TabIndex = 2;
             this.label10.Text = "Apellidos:";
             // 
-            // textBox4
+            // txtClienteNombre
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(107, 55);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox4.Size = new System.Drawing.Size(173, 18);
-            this.textBox4.TabIndex = 1;
+            this.txtClienteNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClienteNombre.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClienteNombre.Location = new System.Drawing.Point(128, 90);
+            this.txtClienteNombre.Multiline = true;
+            this.txtClienteNombre.Name = "txtClienteNombre";
+            this.txtClienteNombre.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtClienteNombre.Size = new System.Drawing.Size(173, 17);
+            this.txtClienteNombre.TabIndex = 1;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(11, 55);
+            this.label11.Location = new System.Drawing.Point(32, 90);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 21);
             this.label11.TabIndex = 0;
@@ -473,7 +439,6 @@ namespace Clave5_Grupo6
             this.groupBox5.BackColor = System.Drawing.Color.MediumVioletRed;
             this.groupBox5.Controls.Add(this.txtTotal);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.btnRegistrar);
             this.groupBox5.Controls.Add(this.numeric3);
             this.groupBox5.Controls.Add(this.numeric2);
             this.groupBox5.Controls.Add(this.numeric1);
@@ -488,9 +453,9 @@ namespace Clave5_Grupo6
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.Cornsilk;
-            this.groupBox5.Location = new System.Drawing.Point(356, 175);
+            this.groupBox5.Location = new System.Drawing.Point(395, 294);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(286, 363);
+            this.groupBox5.Size = new System.Drawing.Size(286, 276);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Menú";
@@ -498,8 +463,9 @@ namespace Clave5_Grupo6
             // txtTotal
             // 
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(154, 308);
+            this.txtTotal.Location = new System.Drawing.Point(154, 240);
             this.txtTotal.Multiline = true;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -511,28 +477,16 @@ namespace Clave5_Grupo6
             this.label12.AutoSize = true;
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label12.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(57, 309);
+            this.label12.Location = new System.Drawing.Point(57, 241);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 25);
             this.label12.TabIndex = 9;
             this.label12.Text = "Total: ";
             // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRegistrar.Location = new System.Drawing.Point(103, 251);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(88, 34);
-            this.btnRegistrar.TabIndex = 11;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            // 
             // numeric3
             // 
             this.numeric3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numeric3.Location = new System.Drawing.Point(208, 212);
+            this.numeric3.Location = new System.Drawing.Point(208, 202);
             this.numeric3.Name = "numeric3";
             this.numeric3.Size = new System.Drawing.Size(47, 23);
             this.numeric3.TabIndex = 17;
@@ -541,7 +495,7 @@ namespace Clave5_Grupo6
             // numeric2
             // 
             this.numeric2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numeric2.Location = new System.Drawing.Point(208, 175);
+            this.numeric2.Location = new System.Drawing.Point(208, 165);
             this.numeric2.Name = "numeric2";
             this.numeric2.Size = new System.Drawing.Size(47, 23);
             this.numeric2.TabIndex = 16;
@@ -550,7 +504,7 @@ namespace Clave5_Grupo6
             // numeric1
             // 
             this.numeric1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numeric1.Location = new System.Drawing.Point(208, 133);
+            this.numeric1.Location = new System.Drawing.Point(208, 123);
             this.numeric1.Name = "numeric1";
             this.numeric1.Size = new System.Drawing.Size(47, 23);
             this.numeric1.TabIndex = 15;
@@ -561,7 +515,7 @@ namespace Clave5_Grupo6
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox10.Enabled = false;
             this.textBox10.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(44, 212);
+            this.textBox10.Location = new System.Drawing.Point(44, 202);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(48, 26);
@@ -574,7 +528,7 @@ namespace Clave5_Grupo6
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox9.Enabled = false;
             this.textBox9.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(44, 172);
+            this.textBox9.Location = new System.Drawing.Point(44, 162);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(48, 26);
@@ -587,7 +541,7 @@ namespace Clave5_Grupo6
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox8.Enabled = false;
             this.textBox8.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(44, 133);
+            this.textBox8.Location = new System.Drawing.Point(44, 123);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(48, 26);
@@ -600,7 +554,7 @@ namespace Clave5_Grupo6
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox7.Enabled = false;
             this.textBox7.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(17, 212);
+            this.textBox7.Location = new System.Drawing.Point(17, 202);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -613,7 +567,7 @@ namespace Clave5_Grupo6
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox6.Enabled = false;
             this.textBox6.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(17, 172);
+            this.textBox6.Location = new System.Drawing.Point(17, 162);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
             this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -626,7 +580,7 @@ namespace Clave5_Grupo6
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox5.Enabled = false;
             this.textBox5.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(17, 133);
+            this.textBox5.Location = new System.Drawing.Point(17, 123);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(21, 26);
@@ -639,9 +593,9 @@ namespace Clave5_Grupo6
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.InitialImage = null;
-            this.pictureBox5.Location = new System.Drawing.Point(103, 19);
+            this.pictureBox5.Location = new System.Drawing.Point(112, 17);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(79, 77);
+            this.pictureBox5.Size = new System.Drawing.Size(66, 65);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -650,7 +604,7 @@ namespace Clave5_Grupo6
             // 
             this.label14.AutoSize = true;
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label14.Location = new System.Drawing.Point(198, 98);
+            this.label14.Location = new System.Drawing.Point(198, 88);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(67, 21);
             this.label14.TabIndex = 2;
@@ -660,47 +614,297 @@ namespace Clave5_Grupo6
             // 
             this.label15.AutoSize = true;
             this.label15.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label15.Location = new System.Drawing.Point(17, 98);
+            this.label15.Location = new System.Drawing.Point(17, 88);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(75, 21);
             this.label15.TabIndex = 0;
             this.label15.Text = "Opciones";
             // 
-            // button2
+            // btnRegistros
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 580);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 30);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Registros";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnRegistros.BackColor = System.Drawing.Color.Purple;
+            this.btnRegistros.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistros.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnRegistros.Location = new System.Drawing.Point(154, 126);
+            this.btnRegistros.Name = "btnRegistros";
+            this.btnRegistros.Size = new System.Drawing.Size(95, 37);
+            this.btnRegistros.TabIndex = 12;
+            this.btnRegistros.Text = "Registros";
+            this.btnRegistros.UseVisualStyleBackColor = false;
+            this.btnRegistros.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnCerrar
             // 
+            this.btnCerrar.BackColor = System.Drawing.Color.Purple;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(276, 580);
+            this.btnCerrar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCerrar.Location = new System.Drawing.Point(154, 214);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(95, 30);
+            this.btnCerrar.Size = new System.Drawing.Size(95, 39);
             this.btnCerrar.TabIndex = 13;
             this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.MediumOrchid;
+            this.groupBox6.Controls.Add(this.btnPersonas);
+            this.groupBox6.Controls.Add(this.txtPersonas);
+            this.groupBox6.Controls.Add(this.pictureBox6);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.ForeColor = System.Drawing.Color.Cornsilk;
+            this.groupBox6.Location = new System.Drawing.Point(721, 13);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(286, 119);
+            this.groupBox6.TabIndex = 11;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Asistentes";
+            // 
+            // btnPersonas
+            // 
+            this.btnPersonas.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnPersonas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPersonas.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnPersonas.Location = new System.Drawing.Point(154, 87);
+            this.btnPersonas.Name = "btnPersonas";
+            this.btnPersonas.Size = new System.Drawing.Size(76, 26);
+            this.btnPersonas.TabIndex = 10;
+            this.btnPersonas.Text = "Ingresar";
+            this.btnPersonas.UseVisualStyleBackColor = false;
+            // 
+            // txtPersonas
+            // 
+            this.txtPersonas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPersonas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPersonas.Location = new System.Drawing.Point(154, 55);
+            this.txtPersonas.Multiline = true;
+            this.txtPersonas.Name = "txtPersonas";
+            this.txtPersonas.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtPersonas.Size = new System.Drawing.Size(76, 26);
+            this.txtPersonas.TabIndex = 9;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.InitialImage = null;
+            this.pictureBox6.Location = new System.Drawing.Point(8, 26);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(83, 74);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 8;
+            this.pictureBox6.TabStop = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label13.Location = new System.Drawing.Point(121, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(143, 21);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Ingrese la cantidad";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.DarkMagenta;
+            this.groupBox7.Controls.Add(this.HoraFin);
+            this.groupBox7.Controls.Add(this.label18);
+            this.groupBox7.Controls.Add(this.pictureBox8);
+            this.groupBox7.Controls.Add(this.label17);
+            this.groupBox7.Controls.Add(this.HoraInicio);
+            this.groupBox7.Controls.Add(this.Fecha);
+            this.groupBox7.Controls.Add(this.pictureBox7);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.ForeColor = System.Drawing.Color.Cornsilk;
+            this.groupBox7.Location = new System.Drawing.Point(395, 13);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(286, 265);
+            this.groupBox7.TabIndex = 12;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Fecha y Hora";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.InitialImage = null;
+            this.pictureBox7.Location = new System.Drawing.Point(7, 39);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(67, 74);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 8;
+            this.pictureBox7.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label16.Location = new System.Drawing.Point(118, 39);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(121, 21);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Ingrese la fecha";
+            // 
+            // Fecha
+            // 
+            this.Fecha.Location = new System.Drawing.Point(80, 73);
+            this.Fecha.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Size = new System.Drawing.Size(199, 27);
+            this.Fecha.TabIndex = 11;
+            this.Fecha.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.HoraInicio.Location = new System.Drawing.Point(123, 166);
+            this.HoraInicio.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ShowUpDown = true;
+            this.HoraInicio.Size = new System.Drawing.Size(116, 27);
+            this.HoraInicio.TabIndex = 12;
+            this.HoraInicio.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Location = new System.Drawing.Point(123, 138);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(86, 21);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Hora inicio";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.InitialImage = null;
+            this.pictureBox8.Location = new System.Drawing.Point(17, 152);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(83, 85);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 14;
+            this.pictureBox8.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label18.Location = new System.Drawing.Point(123, 202);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(70, 21);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Hora Fin";
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.HoraFin.Location = new System.Drawing.Point(123, 229);
+            this.HoraFin.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ShowUpDown = true;
+            this.HoraFin.Size = new System.Drawing.Size(116, 27);
+            this.HoraFin.TabIndex = 17;
+            this.HoraFin.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.groupBox8.Controls.Add(this.btnReserva);
+            this.groupBox8.Controls.Add(this.pictureBox12);
+            this.groupBox8.Controls.Add(this.pictureBox11);
+            this.groupBox8.Controls.Add(this.pictureBox3);
+            this.groupBox8.Controls.Add(this.btnRegistros);
+            this.groupBox8.Controls.Add(this.btnCerrar);
+            this.groupBox8.Controls.Add(this.pictureBox10);
+            this.groupBox8.Controls.Add(this.btnBD);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.ForeColor = System.Drawing.Color.Cornsilk;
+            this.groupBox8.Location = new System.Drawing.Point(721, 196);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(286, 364);
+            this.groupBox8.TabIndex = 12;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Opciones Disponibles";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.InitialImage = null;
+            this.pictureBox10.Location = new System.Drawing.Point(47, 19);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(69, 71);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 8;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(47, 107);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(69, 73);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 14;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.InitialImage = null;
+            this.pictureBox11.Location = new System.Drawing.Point(47, 195);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(69, 74);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 15;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
+            this.pictureBox12.InitialImage = null;
+            this.pictureBox12.Location = new System.Drawing.Point(47, 284);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(69, 74);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 16;
+            this.pictureBox12.TabStop = false;
+            // 
+            // btnReserva
+            // 
+            this.btnReserva.BackColor = System.Drawing.Color.Purple;
+            this.btnReserva.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReserva.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReserva.Location = new System.Drawing.Point(154, 35);
+            this.btnReserva.Name = "btnReserva";
+            this.btnReserva.Size = new System.Drawing.Size(95, 37);
+            this.btnReserva.TabIndex = 17;
+            this.btnReserva.Text = "Reservar";
+            this.btnReserva.UseVisualStyleBackColor = false;
             // 
             // FormClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
-            this.ClientSize = new System.Drawing.Size(663, 644);
-            this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(1024, 571);
+            this.Controls.Add(this.groupBox8);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -711,11 +915,8 @@ namespace Clave5_Grupo6
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.InfoSalas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -725,13 +926,25 @@ namespace Clave5_Grupo6
             ((System.ComponentModel.ISupportInitialize)(this.numeric2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeric1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBD;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
@@ -747,26 +960,20 @@ namespace Clave5_Grupo6
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnAsistentes;
-        private System.Windows.Forms.TextBox txtAsistentes;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView InfoSalas;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTelefonos;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCorreoel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtClienteNombre;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.NumericUpDown numeric3;
         private System.Windows.Forms.NumericUpDown numeric2;
         private System.Windows.Forms.NumericUpDown numeric1;
@@ -779,8 +986,28 @@ namespace Clave5_Grupo6
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRegistros;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnPersonas;
+        private System.Windows.Forms.TextBox txtPersonas;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.DateTimePicker Fecha;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker HoraInicio;
+        private System.Windows.Forms.DateTimePicker HoraFin;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Button btnReserva;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }
 

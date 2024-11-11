@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace Clave5_Grupo6
 {
-    public partial class FormClientes : Form
+    public partial class Reservas : Form
     {
         //Creacion de variables estaticas de clase 
 
@@ -26,18 +26,12 @@ namespace Clave5_Grupo6
 
         //Instancia para conexión a MySQL, recibe la cadena de conexión
         static MySqlConnection conexionBD = new MySqlConnection(cadenaConexion);
-
-        public FormClientes()
+        public Reservas()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnConexionBD_Click(object sender, EventArgs e)
         {
             try
             {
@@ -55,23 +49,16 @@ namespace Clave5_Grupo6
             }
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
+        private void btnRegresar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Crear una nueva instancia de FormClientes
+            FormClientes formClientes = new FormClientes();
 
-        }
+            // Mostrar FormClientes
+            formClientes.Show();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Crear una nueva instancia del formulario 'Reservas'
-            Reservas reservasForm = new Reservas();
-
-            // Cerrar el formulario actual (Form1)
-            this.Hide();
-
-            // Mostrar el formulario 'Reservas'
-            reservasForm.Show();
-
+            // Cerrar el formulario actual (Reservas)
+            this.Close();
         }
     }
 }

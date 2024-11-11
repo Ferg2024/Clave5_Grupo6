@@ -25,7 +25,7 @@ namespace Clave5_Grupo6
 
             if (Users == "admin" && Password == "1111")
             {
-                MessageBox.Show("Bienvenido, espere un momento...", "Iniciando.....", MessageBoxButtons.OK);
+                MessageBox.Show("Bienvenid@, presione en Aceptar", "Work Office S.A de C.V", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.Hide();
 
                 FormClientes formClientes = new FormClientes();
@@ -33,7 +33,7 @@ namespace Clave5_Grupo6
             }
             else
             {
-                MessageBox.Show("Datos Incorrectos.", "Intente Nuevamente", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                MessageBox.Show("Los datos que ha ingresado no son los correctos.", "Intente Nuevamente", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 txtUser.Text = "";
                 txtPassword.Text = "";
                 txtUser.Focus();
@@ -42,7 +42,41 @@ namespace Clave5_Grupo6
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            Close();
+            // Mostrar un cuadro de mensaje de confirmación con botones Yes y No
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmar salida",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void FormIngreso_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            // Obtener el texto del TextBox
+            string texto = txtUser.Text;
+
+            // Validar que no esté vacío ni contenga solo espacios
+            if (string.IsNullOrWhiteSpace(texto))
+            {
+      
+                errorUsuario.SetError(txtUser, "El campo no puede contener espacios vacíos.");
+            }
+            else
+            {
+                // Si pasa la validación, quitar el mensaje de error
+                errorUsuario.SetError(txtUser, string.Empty);
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
