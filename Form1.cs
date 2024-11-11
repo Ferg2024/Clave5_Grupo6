@@ -57,7 +57,13 @@ namespace Clave5_Grupo6
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Mostrar un cuadro de mensaje de confirmación con botones Yes y No
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
 
         }
 

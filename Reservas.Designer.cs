@@ -101,7 +101,7 @@ namespace Clave5_Grupo6
             // btnRegresar
             // 
             this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnRegresar.Location = new System.Drawing.Point(214, 227);
+            this.btnRegresar.Location = new System.Drawing.Point(321, 227);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(76, 27);
             this.btnRegresar.TabIndex = 11;
@@ -112,7 +112,7 @@ namespace Clave5_Grupo6
             // btnConexionBD
             // 
             this.btnConexionBD.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnConexionBD.Location = new System.Drawing.Point(352, 227);
+            this.btnConexionBD.Location = new System.Drawing.Point(418, 227);
             this.btnConexionBD.Name = "btnConexionBD";
             this.btnConexionBD.Size = new System.Drawing.Size(110, 27);
             this.btnConexionBD.TabIndex = 10;
