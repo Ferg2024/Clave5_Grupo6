@@ -11,6 +11,15 @@ using MySql.Data.MySqlClient;
 
 namespace Clave5_Grupo6
 {
+    /// <summary>
+    /// Autores: 
+    /// González Sánchez, Ferdinand Gerard GS24015
+    /// Melendez Arteaga, Mateo Alejandro MA21077
+    /// Fecha de entrega: 13/11/2024
+    /// descripcion del formulario: 
+    /*Este es un formulario de registro de clientes.*/
+    /// </summary>
+    
     public partial class FormClientes : Form
     {
         //Creacion de variables estaticas de clase 
