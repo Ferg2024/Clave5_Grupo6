@@ -13,6 +13,8 @@ namespace Clave5_Grupo6
     public partial class FormClientes : Form
 
     {
+        private List<string> asistentes;
+
         //Creacion de variables estaticas de clase 
         static string Servidor = "localhost"; //Nombre del servidor de MySQL
         static string BD = "clave5_grupodetrabajodb6"; //Nombre de la base de datos
@@ -153,6 +155,24 @@ namespace Clave5_Grupo6
                 errores.AppendLine("La hora de inicio no puede ser igual o mayor que la hora de fin.");
             }
 
+            // Validación de la cantidad de personas
+             int totalPersona = 0;
+            if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
+            {
+                errores.AppendLine("Por favor, ingresa un número válido de personas.");
+            }
+
+            int menu1Personas = (int)numeric1.Value;
+            int menu2Personas = (int)numeric2.Value;
+            int menu3Personas = (int)numeric3.Value;
+
+            int totalSeleccionado = menu1Personas + menu2Personas + menu3Personas;
+
+            if (totalSeleccionado != totalPersona)  // Si la suma no es igual al total de personas
+            {
+                errores.AppendLine("La suma de las personas seleccionadas para los menús no coincide con la cantidad total de personas.");
+            }
+
             // Si hay errores, mostramos todos
             if (errores.Length > 0)
             {
@@ -217,9 +237,83 @@ namespace Clave5_Grupo6
             }
         }
 
+
+        // Método para obtener la capacidad de la sala seleccionada desde la base de datos
+        private int ObtenerCapacidadSala(int idSala)
+        {
+            // Consulta SQL para obtener la capacidad de la sala seleccionada
+            string query = "SELECT Capacidad FROM salas WHERE IDSalas = @idSala";
+            MySqlCommand cmd = new MySqlCommand(query, conexionBD);
+            cmd.Parameters.AddWithValue("@idSala", idSala);
+
+            try
+            {
+                conexionBD.Open();
+                object result = cmd.ExecuteScalar(); // Obtener solo un valor (la capacidad)
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al obtener la capacidad: " + ex.Message);
+                return 0;
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
+
         private void btnPersonas_Click(object sender, EventArgs e)
         {
-          
+            // Validar que se haya seleccionado una sala
+            if (cmbSalas.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, selecciona una sala.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Validar que la cantidad de personas sea un número entero mayor que 0
+            if (string.IsNullOrWhiteSpace(txtPersonas.Text) || Convert.ToInt32(txtPersonas.Text) <= 0)
+            {
+                MessageBox.Show("Por favor, ingresa un número válido de personas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int cantidadPersonas = Convert.ToInt32(txtPersonas.Text);
+
+            // Obtener la sala seleccionada
+            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
+
+            // Obtener la capacidad de la sala
+            int capacidadSala = ObtenerCapacidadSala(salaSeleccionada);
+
+            // Validar que la cantidad de personas no exceda la capacidad de la sala
+            if (cantidadPersonas > capacidadSala)
+            {
+                MessageBox.Show($"La capacidad máxima de esta sala es {capacidadSala} personas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Si la validación pasó, pedimos los nombres de los asistentes
+            asistentes = new List<string>();  // Limpiamos la lista antes de empezar
+
+            for (int i = 0; i < cantidadPersonas; i++)
+            {
+                string nombreAsistente = Microsoft.VisualBasic.Interaction.InputBox($"Ingrese el nombre del asistente {i + 1}:", "Nombre del Asistente", "");
+
+                // Validar que el nombre no esté vacío y que solo contenga letras y acentos
+                if (string.IsNullOrWhiteSpace(nombreAsistente) || !nombreAsistente.All(c => Char.IsLetter(c) || "áéíóúÁÉÍÓÚñÑ".Contains(c)))
+                {
+                    MessageBox.Show("Por favor, ingrese un nombre válido (solo letras y acentos).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    i--;  // Volver a pedir el nombre
+                    continue;
+                }
+
+                asistentes.Add(nombreAsistente);  // Agregar el nombre a la lista de asistentes
+            }
+
+            MessageBox.Show("La lista de asistentes se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         } 
     }
 }

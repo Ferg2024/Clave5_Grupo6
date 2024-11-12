@@ -30,7 +30,7 @@ namespace Clave5_Grupo6
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBD = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -272,14 +272,14 @@ namespace Clave5_Grupo6
             this.InfoSalas.AllowUserToDeleteRows = false;
             this.InfoSalas.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InfoSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.InfoSalas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.InfoSalas.DefaultCellStyle = dataGridViewCellStyle5;
             this.InfoSalas.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.InfoSalas.Location = new System.Drawing.Point(8, 151);
             this.InfoSalas.Name = "InfoSalas";
@@ -689,13 +689,14 @@ namespace Clave5_Grupo6
             // txtPersonas
             // 
             this.txtPersonas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPersonas.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPersonas.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPersonas.Location = new System.Drawing.Point(154, 55);
             this.txtPersonas.Multiline = true;
             this.txtPersonas.Name = "txtPersonas";
             this.txtPersonas.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtPersonas.Size = new System.Drawing.Size(76, 26);
             this.txtPersonas.TabIndex = 9;
+            this.txtPersonas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPersonas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPersonas_KeyPress);
             // 
             // pictureBox6
