@@ -13,7 +13,7 @@ namespace Clave5_Grupo6
 {
     public partial class FormClientes : Form
     {
-        //Creacion de variables estaticas de clase 
+        //Creacion de variables estaticas de clase
 
         static string Servidor = "localhost"; //Nombre del servidor de MySQL
         static string BD = "clave5_grupodetrabajodb6"; //Nombre de la base de datos 
