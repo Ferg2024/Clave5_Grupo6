@@ -10,6 +10,17 @@ using System.Windows.Forms;
 
 namespace Clave5_Grupo6
 {
+
+    /// <summary>
+    /// Autores: 
+    /// González Sánchez, Ferdinand Gerard GS24015
+    /// Melendez Arteaga, Mateo Alejandro MA21077
+    /// Fecha de entrega: 13/11/2024
+    /// descripcion del formulario: 
+    /*Este es un formulario de ingreso, donde se pide una usuario y contraseña para poder abrir el formulario de registro.*/
+    /// </summary>
+
+
     public partial class FormIngreso : Form
     {
         public FormIngreso()
@@ -19,6 +30,7 @@ namespace Clave5_Grupo6
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            //Definiendo variables a utilizar
             String Users, Password;
             Users = txtUser.Text.TrimEnd();
             Password = txtPassword.Text.TrimEnd();
@@ -28,6 +40,7 @@ namespace Clave5_Grupo6
                 MessageBox.Show("Bienvenid@, presione en Aceptar", "Work Office S.A de C.V", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.Hide();
 
+                //Abre el formulario si el usuario y contraseña son correctos
                 FormClientes formClientes = new FormClientes();
                 formClientes.Show();
             }

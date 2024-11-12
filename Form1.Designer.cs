@@ -80,20 +80,20 @@ namespace Clave5_Grupo6
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.HoraFin = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.HoraInicio = new System.Windows.Forms.DateTimePicker();
+            this.Fecha = new System.Windows.Forms.DateTimePicker();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.Fecha = new System.Windows.Forms.DateTimePicker();
-            this.HoraInicio = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.HoraFin = new System.Windows.Forms.DateTimePicker();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.btnReserva = new System.Windows.Forms.Button();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -109,13 +109,13 @@ namespace Clave5_Grupo6
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBD
@@ -727,6 +727,69 @@ namespace Clave5_Grupo6
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Fecha y Hora";
             // 
+            // HoraFin
+            // 
+            this.HoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.HoraFin.Location = new System.Drawing.Point(123, 229);
+            this.HoraFin.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ShowUpDown = true;
+            this.HoraFin.Size = new System.Drawing.Size(116, 27);
+            this.HoraFin.TabIndex = 17;
+            this.HoraFin.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label18.Location = new System.Drawing.Point(123, 202);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(70, 21);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Hora Fin";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.InitialImage = null;
+            this.pictureBox8.Location = new System.Drawing.Point(17, 152);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(83, 85);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 14;
+            this.pictureBox8.TabStop = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label17.Location = new System.Drawing.Point(123, 138);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(86, 21);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Hora inicio";
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.HoraInicio.Location = new System.Drawing.Point(123, 166);
+            this.HoraInicio.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ShowUpDown = true;
+            this.HoraInicio.Size = new System.Drawing.Size(116, 27);
+            this.HoraInicio.TabIndex = 12;
+            this.HoraInicio.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
+            // 
+            // Fecha
+            // 
+            this.Fecha.Location = new System.Drawing.Point(80, 73);
+            this.Fecha.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
+            this.Fecha.Name = "Fecha";
+            this.Fecha.Size = new System.Drawing.Size(199, 27);
+            this.Fecha.TabIndex = 11;
+            this.Fecha.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
+            // 
             // pictureBox7
             // 
             this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -749,69 +812,6 @@ namespace Clave5_Grupo6
             this.label16.TabIndex = 0;
             this.label16.Text = "Ingrese la fecha";
             // 
-            // Fecha
-            // 
-            this.Fecha.Location = new System.Drawing.Point(80, 73);
-            this.Fecha.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
-            this.Fecha.Name = "Fecha";
-            this.Fecha.Size = new System.Drawing.Size(199, 27);
-            this.Fecha.TabIndex = 11;
-            this.Fecha.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraInicio.Location = new System.Drawing.Point(123, 166);
-            this.HoraInicio.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
-            this.HoraInicio.Name = "HoraInicio";
-            this.HoraInicio.ShowUpDown = true;
-            this.HoraInicio.Size = new System.Drawing.Size(116, 27);
-            this.HoraInicio.TabIndex = 12;
-            this.HoraInicio.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label17.Location = new System.Drawing.Point(123, 138);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 21);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "Hora inicio";
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.InitialImage = null;
-            this.pictureBox8.Location = new System.Drawing.Point(17, 152);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(83, 85);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 14;
-            this.pictureBox8.TabStop = false;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label18.Location = new System.Drawing.Point(123, 202);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(70, 21);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Hora Fin";
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraFin.Location = new System.Drawing.Point(123, 229);
-            this.HoraFin.MaxDate = new System.DateTime(2030, 12, 31, 0, 0, 0, 0);
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ShowUpDown = true;
-            this.HoraFin.Size = new System.Drawing.Size(116, 27);
-            this.HoraFin.TabIndex = 17;
-            this.HoraFin.Value = new System.DateTime(2024, 11, 11, 0, 0, 0, 0);
-            // 
             // groupBox8
             // 
             this.groupBox8.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -832,41 +832,17 @@ namespace Clave5_Grupo6
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Opciones Disponibles";
             // 
-            // pictureBox10
+            // btnReserva
             // 
-            this.pictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.InitialImage = null;
-            this.pictureBox10.Location = new System.Drawing.Point(47, 19);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(69, 71);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 8;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(47, 107);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(69, 73);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 14;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.InitialImage = null;
-            this.pictureBox11.Location = new System.Drawing.Point(47, 195);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(69, 74);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox11.TabIndex = 15;
-            this.pictureBox11.TabStop = false;
+            this.btnReserva.BackColor = System.Drawing.Color.Purple;
+            this.btnReserva.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReserva.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnReserva.Location = new System.Drawing.Point(154, 35);
+            this.btnReserva.Name = "btnReserva";
+            this.btnReserva.Size = new System.Drawing.Size(95, 37);
+            this.btnReserva.TabIndex = 17;
+            this.btnReserva.Text = "Reservar";
+            this.btnReserva.UseVisualStyleBackColor = false;
             // 
             // pictureBox12
             // 
@@ -880,17 +856,41 @@ namespace Clave5_Grupo6
             this.pictureBox12.TabIndex = 16;
             this.pictureBox12.TabStop = false;
             // 
-            // btnReserva
+            // pictureBox11
             // 
-            this.btnReserva.BackColor = System.Drawing.Color.Purple;
-            this.btnReserva.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReserva.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnReserva.Location = new System.Drawing.Point(154, 35);
-            this.btnReserva.Name = "btnReserva";
-            this.btnReserva.Size = new System.Drawing.Size(95, 37);
-            this.btnReserva.TabIndex = 17;
-            this.btnReserva.Text = "Reservar";
-            this.btnReserva.UseVisualStyleBackColor = false;
+            this.pictureBox11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.InitialImage = null;
+            this.pictureBox11.Location = new System.Drawing.Point(47, 195);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(69, 74);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 15;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.InitialImage = null;
+            this.pictureBox3.Location = new System.Drawing.Point(47, 107);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(69, 73);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 14;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
+            this.pictureBox10.InitialImage = null;
+            this.pictureBox10.Location = new System.Drawing.Point(47, 19);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(69, 71);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 8;
+            this.pictureBox10.TabStop = false;
             // 
             // FormClientes
             // 
@@ -931,13 +931,13 @@ namespace Clave5_Grupo6
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
