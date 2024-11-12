@@ -50,6 +50,8 @@ namespace Clave5_Grupo6
                 conexionBD.Close(); // se cierra la conexion
             }
         }
+
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {   // Mostrar un cuadro de mensaje de confirmación con botones Yes y No
             DialogResult resultado = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -156,7 +158,7 @@ namespace Clave5_Grupo6
             }
 
             // Validación de la cantidad de personas
-             int totalPersona = 0;
+            int totalPersona = 0;
             if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
             {
                 errores.AppendLine("Por favor, ingresa un número válido de personas.");
@@ -174,19 +176,34 @@ namespace Clave5_Grupo6
             }
 
             // Si hay errores, mostramos todos
+
             if (errores.Length > 0)
             {
                 MessageBox.Show(errores.ToString(), "Errores de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Si el error está en la cantidad de personas, borrar el dato y enfocar el campo
+                if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
+                {
+                    txtPersonas.Clear();  // Borrar el dato
+                    txtPersonas.Focus();  // Establecer el foco en el campo
+                }
+
                 return;
             }
 
-            // Si todo está correcto, continuar con el proceso de reserva
-            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
-            DateTime fechaReserva = Fecha.Value;
-            DateTime horaInicio = HoraInicio.Value;
-            DateTime horaFin = HoraFin.Value;
-
+            // Crear la lista de asistentes
+            List<string> asistentes = new List<string>();
+            for (int i = 0; i < totalPersona; i++)
+            {
+                string asistente = Microsoft.VisualBasic.Interaction.InputBox($"Ingrese el nombre del asistente {i + 1}:", "Nombre del Asistente");
+                if (string.IsNullOrWhiteSpace(asistente))
+                {
+                    MessageBox.Show("El nombre del asistente no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                asistentes.Add(asistente);
+            }
         }
+
 
         private void CargarDatosSalas()
         {
@@ -225,6 +242,8 @@ namespace Clave5_Grupo6
             {
                 MessageBox.Show("Error al cargar las salas: " + ex.Message);
             }
+
+
 
         }
 
