@@ -30,6 +30,7 @@ namespace Clave5_Grupo6
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBD = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -48,6 +49,7 @@ namespace Clave5_Grupo6
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.TxtTelefonos = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCorreoel = new System.Windows.Forms.TextBox();
@@ -93,7 +95,6 @@ namespace Clave5_Grupo6
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.TxtTelefonos = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -269,7 +270,17 @@ namespace Clave5_Grupo6
             // 
             this.InfoSalas.AllowUserToAddRows = false;
             this.InfoSalas.AllowUserToDeleteRows = false;
+            this.InfoSalas.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.InfoSalas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.InfoSalas.DefaultCellStyle = dataGridViewCellStyle4;
+            this.InfoSalas.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.InfoSalas.Location = new System.Drawing.Point(8, 151);
             this.InfoSalas.Name = "InfoSalas";
             this.InfoSalas.ReadOnly = true;
@@ -338,6 +349,15 @@ namespace Clave5_Grupo6
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Personales";
             // 
+            // TxtTelefonos
+            // 
+            this.TxtTelefonos.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTelefonos.Location = new System.Drawing.Point(128, 217);
+            this.TxtTelefonos.Mask = "0000-0000";
+            this.TxtTelefonos.Name = "TxtTelefonos";
+            this.TxtTelefonos.Size = new System.Drawing.Size(74, 23);
+            this.TxtTelefonos.TabIndex = 9;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -391,6 +411,7 @@ namespace Clave5_Grupo6
             this.txtApellido.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtApellido.Size = new System.Drawing.Size(173, 20);
             this.txtApellido.TabIndex = 3;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // label10
             // 
@@ -412,6 +433,7 @@ namespace Clave5_Grupo6
             this.txtClienteNombre.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtClienteNombre.Size = new System.Drawing.Size(173, 21);
             this.txtClienteNombre.TabIndex = 1;
+            this.txtClienteNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClienteNombre_KeyPress);
             // 
             // label11
             // 
@@ -662,6 +684,7 @@ namespace Clave5_Grupo6
             this.btnPersonas.TabIndex = 10;
             this.btnPersonas.Text = "Ingresar";
             this.btnPersonas.UseVisualStyleBackColor = false;
+            this.btnPersonas.Click += new System.EventHandler(this.btnPersonas_Click);
             // 
             // txtPersonas
             // 
@@ -673,6 +696,7 @@ namespace Clave5_Grupo6
             this.txtPersonas.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtPersonas.Size = new System.Drawing.Size(76, 26);
             this.txtPersonas.TabIndex = 9;
+            this.txtPersonas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPersonas_KeyPress);
             // 
             // pictureBox6
             // 
@@ -832,6 +856,7 @@ namespace Clave5_Grupo6
             this.btnReserva.TabIndex = 17;
             this.btnReserva.Text = "Reservar";
             this.btnReserva.UseVisualStyleBackColor = false;
+            this.btnReserva.Click += new System.EventHandler(this.btnReserva_Click);
             // 
             // pictureBox12
             // 
@@ -880,15 +905,6 @@ namespace Clave5_Grupo6
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox10.TabIndex = 8;
             this.pictureBox10.TabStop = false;
-            // 
-            // TxtTelefonos
-            // 
-            this.TxtTelefonos.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTelefonos.Location = new System.Drawing.Point(128, 217);
-            this.TxtTelefonos.Mask = "0000-0000";
-            this.TxtTelefonos.Name = "TxtTelefonos";
-            this.TxtTelefonos.Size = new System.Drawing.Size(54, 23);
-            this.TxtTelefonos.TabIndex = 9;
             // 
             // FormClientes
             // 
