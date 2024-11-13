@@ -407,45 +407,50 @@ namespace Clave5_Grupo6
         }
         private bool ActualizarDisponibilidadSala(int idSala, DateTime fechaReserva, TimeSpan horaInicio, TimeSpan horaFin)
         {
+
             try
             {
                 // Convertir TimeSpan a DateTime (solo para la hora, conservando la fecha original)
-
                 DateTime fechaHoraInicio = fechaReserva.Date.Add(horaInicio);  // Combina la fecha con la hora de inicio
                 DateTime fechaHoraFin = fechaReserva.Date.Add(horaFin);  // Combina la fecha con la hora de fin
 
-                // Consulta SQL ajustada para verificar horas
-                string query = @"SELECT COUNT(*) 
-                 FROM reservas 
-                 WHERE IdSala = @idSala 
-                 AND ((FechaReserva = @fechaReserva 
-                       AND (FechaInicio < @horaFin AND FechaFin > @horaInicio)) 
-                      OR FechaReserva > @fechaReserva)";
+                // Consulta SQL ajustada para verificar la disponibilidad de la sala
+                string query = @"
+            SELECT COUNT(*) 
+            FROM reservas 
+            WHERE IdSala = @idSala 
+            AND (
+                (FechaReserva = @fechaReserva 
+                 AND (FechaInicio < @horaFin AND FechaFin > @horaInicio)) 
+                OR FechaReserva > @fechaReserva
+            )";
 
+                // Crear comando SQL
                 using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
                 {
-                    // Parámetros de la consulta
+                    // Parámetros de la consulta SQL
                     cmd.Parameters.AddWithValue("@idSala", idSala);
-                    cmd.Parameters.AddWithValue("@fechaReserva", fechaReserva.Date);  // Solo la fecha sin la hora
-                    cmd.Parameters.AddWithValue("@horaInicio", fechaHoraInicio);  // Usamos DateTime con hora
-                    cmd.Parameters.AddWithValue("@horaFin", fechaHoraFin);  // Usamos DateTime con hora
+                    cmd.Parameters.AddWithValue("@fechaReserva", fechaReserva.Date);  // Solo la fecha (sin la hora)
+                    cmd.Parameters.AddWithValue("@horaInicio", fechaHoraInicio);  // Fecha + Hora de inicio
+                    cmd.Parameters.AddWithValue("@horaFin", fechaHoraFin);  // Fecha + Hora de fin
 
                     // Abrir la conexión
-                    using (conexionBD)  // Usar 'using' para asegurar que la conexión se cierre automáticamente
+                    using (conexionBD)  // Usamos 'using' para asegurar que la conexión se cierra automáticamente
                     {
                         conexionBD.Open();
 
-                        // Ejecutar la consulta
+                        // Ejecutar la consulta y obtener el resultado
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
 
                         // Si count > 0, significa que hay una reserva con horario ocupado 
-                        return count == 0;  // Si no hay solapamiento, devolver true
+                        // Si no hay solapamiento (count == 0), la sala está disponible
+                        return count == 0;
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Mostrar mensaje de error si hay un problema al verificar la disponibilidad
+                // Si ocurre un error, mostrar mensaje y retornar false
                 MessageBox.Show("Error al verificar la disponibilidad de la sala: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

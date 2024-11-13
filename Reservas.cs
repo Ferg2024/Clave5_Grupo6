@@ -233,5 +233,10 @@ namespace Clave5_Grupo6
         {
 
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
