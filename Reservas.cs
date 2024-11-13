@@ -93,5 +93,36 @@ namespace Clave5_Grupo6
                 }
 
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            //Recupera el id seleccionado a eliminar
+            int id = Convert.ToInt32(MostrarReservas.CurrentRow.Cells["IDClientes"].Value);
+            MySqlCommand consulta = new MySqlCommand();
+            conexionBD.Open();
+            consulta.Connection = conexionBD;
+            consulta.CommandText = "DELETE FROM CLIENTE WHERE IDClientes = '" + id + "'";
+            try
+            {
+                MySqlDataAdapter adaptadorMySQL = new MySqlDataAdapter();
+                adaptadorMySQL.SelectCommand = consulta;
+                DataTable tabla = new DataTable();
+                adaptadorMySQL.Fill(tabla); //ejecutar el DELETE
+                MessageBox.Show("elemento eliminado!!");
+                //SE CONSULTA LA TABLA NUEVAMENTE
+                consulta.CommandText = ("select * from cliente"); //realizar una consulta de la tabla
+                adaptadorMySQL.Fill(tabla);
+                MostrarReservas.DataSource = tabla;
+            }
+            catch (MySqlException ex) //manejo de excepciones MySQL
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        } //Fin botón eliminar
+    
     }
 }
