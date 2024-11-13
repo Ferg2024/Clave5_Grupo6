@@ -60,5 +60,38 @@ namespace Clave5_Grupo6
             // Cerrar el formulario actual (Reservas)
             this.Close();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+          
+                //Inicializa una nueva instancia de la clase MySqlCommand.
+                MySqlCommand consulta = new MySqlCommand();
+                conexionBD.Open(); //se abre la conexion de la variable declarada en la superior del formulario
+
+                //Instancia para conexión a MySQL, recibe la cadena de conexión
+                consulta.Connection = conexionBD;
+                consulta.CommandText = ("select * from clientes");
+
+                try
+                {
+                    
+                //Inicializa una nueva instancia de la clase MySqlDataAdapter con
+                //el MySqlCommand especificado como propiedad SelectCommand.
+                    MySqlDataAdapter adaptadorMySQL = new MySqlDataAdapter();
+                    adaptadorMySQL.SelectCommand = consulta;
+                    DataTable tabla = new DataTable();
+                    adaptadorMySQL.Fill(tabla);
+                    MostrarReservas.DataSource = tabla;
+                }
+                catch (MySqlException ex) //manejo de excepciones MySQL
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
+                finally
+                {
+                    conexionBD.Close();
+                }
+
+        }
     }
 }

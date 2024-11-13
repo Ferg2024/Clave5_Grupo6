@@ -164,6 +164,7 @@ namespace Clave5_Grupo6
                 errores.AppendLine("Por favor, ingresa un número válido de personas.");
             }
 
+            //
             int menu1Personas = (int)numeric1.Value;
             int menu2Personas = (int)numeric2.Value;
             int menu3Personas = (int)numeric3.Value;
