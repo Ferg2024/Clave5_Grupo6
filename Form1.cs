@@ -109,7 +109,6 @@ namespace Clave5_Grupo6
         private void btnReserva_Click(object sender, EventArgs e)
         {
             // Variable para almacenar los mensajes de error
-            // Variable para almacenar los mensajes de error
             StringBuilder errores = new StringBuilder();
 
             // Validación de nombre
@@ -168,7 +167,6 @@ namespace Clave5_Grupo6
             int menu2Personas = (int)numeric2.Value;
             int menu3Personas = (int)numeric3.Value;
 
-
             int totalSeleccionado = menu1Personas + menu2Personas + menu3Personas;
 
             if (totalSeleccionado != totalPersona)  // Si la suma no es igual al total de personas
@@ -195,32 +193,85 @@ namespace Clave5_Grupo6
             // Crear el cliente con los datos ingresados
             Cliente cliente = new Cliente(txtClienteNombre.Text, txtApellido.Text, txtCorreoel.Text, TxtTelefonos.Text);
 
+            // Insertar el cliente y obtener su ID
+            int clienteId = InsertarCliente(cliente);
+
+            // Verificar si el ID es válido
+            if (clienteId == -1)
+            {
+                MessageBox.Show("No se pudo insertar el cliente. La operación fue cancelada.");
+                return;
+            }
+
+            // Asignar el ID al cliente después de la inserción
+            cliente.ID = clienteId;
+
+
             // Crear la reserva con los datos del formulario
             int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
             DateTime fechaReserva = Fecha.Value;
             TimeSpan horaInicio = HoraInicio.Value.TimeOfDay;
             TimeSpan horaFin = HoraFin.Value.TimeOfDay;
 
-            // Crear el objeto Reserva (deberías instanciarlo así)
-            Reserva reserva = new Reserva(0, cliente, new Sala(salaSeleccionada, 0, "", "", true, false, false, false), fechaReserva, horaInicio, horaFin, "", 0, new List<string>());
+            // Paso 1.1: Crear la cadena de los menús seleccionados
+              string menuSeleccionado = "";
+            if (menu1Personas > 0)
+            {
+                menuSeleccionado += $"Menú 1: {menu1Personas} persona(s)\n";
+            }
+            if (menu2Personas > 0)
+            {
+                menuSeleccionado += $"Menú 2: {menu2Personas} persona(s)\n";
+            }
+            if (menu3Personas > 0)
+            {
+                menuSeleccionado += $"Menú 3: {menu3Personas} persona(s)\n";
+            }
 
-            // Calcular el total
-            reserva.CalcularTotal();
+            // Paso 1.2: Convertir la lista de asistentes a una cadena separada por comas
+            string asistentesString = string.Join(",", asistentes);  // Lista de asistentes convertida a una cadena
+
+            // Paso 2: Crear la reserva con los datos del formulario, incluyendo los menús seleccionados y los asistentes
+            Reserva reserva = new Reserva(
+                0,  // ID de la reserva (aún no generado)
+                cliente,  // El cliente recién insertado
+                new Sala(salaSeleccionada, clienteId, "", "", true, false, false, false),  // Sala seleccionada
+                fechaReserva,  // Fecha de la reserva
+                horaInicio,  // Hora de inicio
+                horaFin,  // Hora de fin
+                menuSeleccionado,  // Asignar la cadena de menús seleccionados
+                totalSeleccionado,  // Total de personas para todos los menús
+                asistentes  // Lista de asistentes
+            );
+
+            // Asignar precios a los menús según el número de personas que los seleccionaron
+            decimal precioMenu1 = 10.00m;  // Precio por persona para el Menú 1
+            decimal precioMenu2 = 12.00m;  // Precio por persona para el Menú 2
+            decimal precioMenu3 = 15.00m;  // Precio por persona para el Menú 3
+
+            decimal total = (menu1Personas * precioMenu1) + (menu2Personas * precioMenu2) + (menu3Personas * precioMenu3);
+
+            // Asignar el total calculado a la reserva
+            reserva.TotalPago = total;
 
             // Mostrar el total en el txtTotal
             txtTotal.Text = reserva.TotalPago.ToString("C"); // Formatear como moneda, por ejemplo
+            // Verifica si el ID del cliente es válido antes de insertar la reserva
+             if (reserva.Cliente.ID == 0)
+            {
+                MessageBox.Show("Error: El cliente no tiene un ID válido.");
+                return;
+            }
 
-            // Insertar el cliente en la base de datos
-            InsertarCliente(cliente);
             InsertarReserva(reserva);
 
         }
 
-        private void InsertarCliente(Cliente cliente)
+        private int InsertarCliente(Cliente cliente)
         {
             try
             {
-                // Crear la consulta SQL
+                // Crear la consulta SQL para insertar el cliente
                 string query = "INSERT INTO Clientes (Nombre, Apellido, Correo, Telefono) " +
                                "VALUES (@Nombre, @Apellido, @Correo, @Telefono)";
 
@@ -236,27 +287,39 @@ namespace Clave5_Grupo6
                     // Abrir la conexión
                     conexionBD.Open();
 
-                    // Ejecutar la consulta
+                    // Ejecutar la consulta para insertar el cliente
                     cmd.ExecuteNonQuery();
 
-                    // Mostrar un mensaje indicando que la inserción fue exitosa
+                    // Recuperar el ID del cliente recién insertado
+                    cmd.CommandText = "SELECT LAST_INSERT_ID()";  // Obtener el último ID insertado
+                    int clienteId = Convert.ToInt32(cmd.ExecuteScalar()); // Ejecuta el query y obtiene el ID
+
+                    // Asignar el ID al objeto cliente
+                    cliente.ID = clienteId;
+
+                    // Confirmación de inserción exitosa
                     MessageBox.Show("Cliente insertado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Retornar el ID del cliente recién insertado
+                    return clienteId;
                 }
             }
             catch (Exception ex)
             {
                 // Mostrar un mensaje de error si algo falla
                 MessageBox.Show("Error al insertar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;  // Retornar -1 si ocurre un error
             }
             finally
             {
-                // Cerrar la conexión, si está abierta
+                // Cerrar la conexión si está abierta
                 if (conexionBD.State == ConnectionState.Open)
                 {
                     conexionBD.Close();
                 }
             }
         }
+
         private void InsertarReserva(Reserva reserva)
         {
             try
