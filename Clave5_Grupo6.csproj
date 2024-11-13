@@ -33,6 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MySql.Data, Version=8.0.26.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +48,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente.cs" />
+    <Compile Include="Entidad.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIngreso.Designer.cs">
+      <DependentUpon>FormIngreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs" />
+    <Compile Include="Reservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservas.Designer.cs">
+      <DependentUpon>Reservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sala.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormIngreso.resx">
+      <DependentUpon>FormIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +86,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reservas.resx">
+      <DependentUpon>Reservas.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +103,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\regresar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Empresa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Us1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Usu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hora.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\personas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reserva.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\datos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cerrar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contraseña.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
