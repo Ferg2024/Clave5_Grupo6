@@ -63,8 +63,14 @@ namespace Clave5_Grupo6
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-          
-                
+            /*
+            // Obtén el número de registro seleccionado
+            int numeroRegistro = (int)numericBuscar.Value;
+
+            // Llama al método para cargar el registro específico en el DataGridView
+            CargarRegistro(numeroRegistro);
+            */
+
 
         }
 

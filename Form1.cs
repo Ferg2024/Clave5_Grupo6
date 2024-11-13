@@ -211,8 +211,48 @@ namespace Clave5_Grupo6
             // Insertar el cliente en la base de datos
             InsertarCliente(cliente);
 
+            // Crear las reservas con los datos ingresados
+            Reserva reserva = new Reserva(0, cliente, cmbSalas, Fecha.Value, HoraInicio.Value.TimeOfDay, HoraFin.Value.TimeOfDay, ObtenerMenuSeleccionado(), totalPersona, asistentes);
 
+            // Insertar el cliente en la base de datos
+            InsertarReserva(reserva);
         }
+
+        //Método InsertarReserva
+        private void InsertarReserva(Reserva reserva)
+        {
+            string connectionString = "Server=localhost;Database=TuBaseDeDatos;User ID=TuUsuario;Password=TuContraseña;";
+            string query = "INSERT INTO reservas (IdClientes, IdSala, FechaReserva, FechaInicio, FechaFin, MenuSeleccionado, CantidadAsistentes, Asistentes, TotalPago) " +
+                           "VALUES (@IdClientes, @IdSala, @FechaReserva, @FechaInicio, @FechaFin, @MenuSeleccionado, @CantidadAsistentes, @Asistentes, @TotalPago);";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlCommand command = new MySqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@IdClientes", reserva.Cliente);
+                command.Parameters.AddWithValue("@IdSala", reserva.Sala.ID);  // Suponiendo que la clase Sala tiene una propiedad ID
+                command.Parameters.AddWithValue("@FechaReserva", reserva.FechaReserva);
+                command.Parameters.AddWithValue("@FechaInicio", reserva.FechaReserva.Date + reserva.HoraInicio);
+                command.Parameters.AddWithValue("@FechaFin", reserva.FechaReserva.Date + reserva.HoraFin);
+                command.Parameters.AddWithValue("@MenuSeleccionado", reserva.MenuSeleccionado);
+                command.Parameters.AddWithValue("@CantidadAsistentes", reserva.CantidadAsistentes);
+                command.Parameters.AddWithValue("@Asistentes", string.Join(",", reserva.Asistentes));
+                command.Parameters.AddWithValue("@TotalPago", reserva.TotalPago);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        //Método ObtenerSalaSeleccionada
+        private Sala ObtenerSalaSeleccionada()
+        {
+            // Ejemplo para obtener la sala seleccionada desde un ComboBox
+            int salaId = (int)cmbSalas.SelectedValue;
+            Sala sala = new Sala { ID = salaId }; // Supón que la clase Sala tiene un constructor sin parámetros
+            return sala;
+        }
+
 
         private void InsertarCliente(Cliente cliente)
         {
