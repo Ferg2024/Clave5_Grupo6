@@ -205,6 +205,7 @@ namespace Clave5_Grupo6
             this.btnMostrar.TabIndex = 2;
             this.btnMostrar.Text = "Mostrar";
             this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click_1);
             // 
             // label1
             // 
