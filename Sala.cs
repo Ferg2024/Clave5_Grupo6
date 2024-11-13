@@ -12,7 +12,7 @@ namespace Clave5_Grupo6
         public int Capacidad { get; set; }
         public string Ubicacion { get; set; }
         public string Distribucion { get; set; }
-        public bool Disponibilidad { get; set; }  // true si está disponible
+        public bool Disponibilidad { get; set; } 
         public bool Proyector { get; set; }
         public bool Oasis { get; set; }
         public bool Cafetera { get; set; }

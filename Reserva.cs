@@ -8,20 +8,20 @@ namespace Clave5_Grupo6
 {
     public class Reserva : Entidad
     {
-        // Atributos específicos de Reserva
+    // Atributos específicos de Reserva
     public Cliente Cliente { get; set; }
     public Sala Sala { get; set; }
     public DateTime FechaReserva { get; set; }
     public TimeSpan HoraInicio { get; set; }  // Cambiado a TimeSpan para trabajar solo con horas
     public TimeSpan HoraFin { get; set; }     // Cambiado a TimeSpan para trabajar solo con horas
-    public string MenuSeleccionado { get; set; }  // 1, 2 o 3
+    public string MenuSeleccionado { get; set; } 
     public int CantidadAsistentes { get; set; }
     public List<string> Asistentes { get; set; }
     public decimal TotalPago { get; set; }
 
-    // Constructor que ya no recibe el totalPago
+    // Constructor
     public Reserva(int id, Cliente cliente, Sala sala, DateTime fechaReserva, TimeSpan horaInicio, TimeSpan horaFin, string menuSeleccionado, int cantidadAsistentes, List<string> asistentes)
-        : base(id, cliente.Nombre)  // Usamos el nombre del cliente como nombre de la reserva
+        : base(id, cliente.Nombre)
     {
         Cliente = cliente;
         Sala = sala;
@@ -31,10 +31,9 @@ namespace Clave5_Grupo6
         MenuSeleccionado = menuSeleccionado;
         CantidadAsistentes = cantidadAsistentes;
         Asistentes = asistentes;
-        TotalPago = 0.0m;  // Lo inicializas en 0.0M porque lo vamos a calcular después
+        TotalPago = 0.0m; 
     }
 
-        // Método para calcular el total a pagar por la reserva
         public void CalcularTotal()
         {
             decimal precioMenu = 0;

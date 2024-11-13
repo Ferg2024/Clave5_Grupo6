@@ -53,7 +53,7 @@ namespace Clave5_Grupo6
 
         private void FormIngreso_Load(object sender, EventArgs e)
         {
-
+            txtUser.Focus();
         }
 
         private void txtUser_TextChanged(object sender, EventArgs e)

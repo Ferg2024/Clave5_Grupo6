@@ -276,7 +276,7 @@ namespace Clave5_Grupo6
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -299,10 +299,11 @@ namespace Clave5_Grupo6
             // cmbSalas
             // 
             this.cmbSalas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbSalas.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSalas.FormattingEnabled = true;
             this.cmbSalas.Location = new System.Drawing.Point(163, 66);
             this.cmbSalas.Name = "cmbSalas";
-            this.cmbSalas.Size = new System.Drawing.Size(144, 27);
+            this.cmbSalas.Size = new System.Drawing.Size(144, 29);
             this.cmbSalas.TabIndex = 9;
             // 
             // pictureBox2
@@ -484,13 +485,14 @@ namespace Clave5_Grupo6
             // 
             this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(154, 240);
             this.txtTotal.Multiline = true;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtTotal.Size = new System.Drawing.Size(76, 26);
             this.txtTotal.TabIndex = 11;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label12
             // 

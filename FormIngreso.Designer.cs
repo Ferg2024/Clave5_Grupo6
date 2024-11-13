@@ -87,6 +87,7 @@ namespace Clave5_Grupo6
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(66, 22);
             this.txtPassword.TabIndex = 9;
+            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUser
@@ -97,6 +98,7 @@ namespace Clave5_Grupo6
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(66, 22);
             this.txtUser.TabIndex = 8;
+            this.txtUser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             // 
             // lblPassword
