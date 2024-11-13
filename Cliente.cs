@@ -14,7 +14,7 @@ namespace Clave5_Grupo6
         public string Telefono { get; set; }
 
         // Constructor que llama al constructor de la clase base (Entidad)
-        public Cliente(int id, string nombre, string apellido, string correo, string telefono): base(id, nombre)
+        public Cliente(string nombre, string apellido, string correo, string telefono): base(0, nombre)
         {
             Apellido = apellido;
             Correo = correo;

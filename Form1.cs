@@ -202,6 +202,57 @@ namespace Clave5_Grupo6
                 }
                 asistentes.Add(asistente);
             }
+
+
+            // Crear el cliente con los datos ingresados
+            Cliente cliente = new Cliente(txtClienteNombre.Text, txtApellido.Text, txtCorreoel.Text, TxtTelefonos.Text);
+
+            // Insertar el cliente en la base de datos
+            InsertarCliente(cliente);
+
+
+        }
+
+        private void InsertarCliente(Cliente cliente)
+        {
+            try
+            {
+                // Crear la consulta SQL
+                string query = "INSERT INTO Clientes (Nombre, Apellido, Correo, Telefono) " +
+                               "VALUES (@Nombre, @Apellido, @Correo, @Telefono)";
+
+                // Crear el comando SQL con la conexión a la base de datos
+                using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
+                {
+                    // Añadir los parámetros con los valores del cliente
+                    cmd.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", cliente.Apellido);
+                    cmd.Parameters.AddWithValue("@Correo", cliente.Correo);
+                    cmd.Parameters.AddWithValue("@Telefono", cliente.Telefono);
+
+                    // Abrir la conexión
+                    conexionBD.Open();
+
+                    // Ejecutar la consulta
+                    cmd.ExecuteNonQuery();
+
+                    // Mostrar un mensaje indicando que la inserción fue exitosa
+                    MessageBox.Show("Cliente insertado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Mostrar un mensaje de error si algo falla
+                MessageBox.Show("Error al insertar el cliente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Cerrar la conexión, si está abierta
+                if (conexionBD.State == ConnectionState.Open)
+                {
+                    conexionBD.Close();
+                }
+            }
         }
 
 
