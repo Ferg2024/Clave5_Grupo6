@@ -18,8 +18,8 @@ namespace Clave5_Grupo6
         public bool Cafetera { get; set; }
 
         // Constructor que llama al constructor de la clase base (Entidad)
-        public Sala(int id, string nombre, int capacidad, string ubicacion, string distribucion, bool disponibilidad, bool proyector, bool oasis, bool cafetera)
-            : base(id, nombre)
+        public Sala(int id, int capacidad, string ubicacion, string distribucion, bool disponibilidad, bool proyector, bool oasis, bool cafetera)
+            : base(id, "")
         {
             Capacidad = capacidad;
             Ubicacion = ubicacion;

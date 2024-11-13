@@ -168,6 +168,7 @@ namespace Clave5_Grupo6
             int menu2Personas = (int)numeric2.Value;
             int menu3Personas = (int)numeric3.Value;
 
+
             int totalSeleccionado = menu1Personas + menu2Personas + menu3Personas;
 
             if (totalSeleccionado != totalPersona)  // Si la suma no es igual al total de personas
@@ -190,26 +191,28 @@ namespace Clave5_Grupo6
                 return;
             }
 
-            // Crear la lista de asistentes
-            List<string> asistentes = new List<string>();
-            for (int i = 0; i < totalPersona; i++)
-            {
-                string asistente = Microsoft.VisualBasic.Interaction.InputBox($"Ingrese el nombre del asistente {i + 1}:", "Nombre del Asistente");
-                if (string.IsNullOrWhiteSpace(asistente))
-                {
-                    MessageBox.Show("El nombre del asistente no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                asistentes.Add(asistente);
-            }
-
 
             // Crear el cliente con los datos ingresados
             Cliente cliente = new Cliente(txtClienteNombre.Text, txtApellido.Text, txtCorreoel.Text, TxtTelefonos.Text);
 
+            // Crear la reserva con los datos del formulario
+            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
+            DateTime fechaReserva = Fecha.Value;
+            TimeSpan horaInicio = HoraInicio.Value.TimeOfDay;
+            TimeSpan horaFin = HoraFin.Value.TimeOfDay;
+
+            // Crear el objeto Reserva (deberías instanciarlo así)
+            Reserva reserva = new Reserva(0, cliente, new Sala(salaSeleccionada, 0, "", "", true, false, false, false), fechaReserva, horaInicio, horaFin, "", 0, new List<string>());
+
+            // Calcular el total
+            reserva.CalcularTotal();
+
+            // Mostrar el total en el txtTotal
+            txtTotal.Text = reserva.TotalPago.ToString("C"); // Formatear como moneda, por ejemplo
+
             // Insertar el cliente en la base de datos
             InsertarCliente(cliente);
-
+            InsertarReserva(reserva);
 
         }
 
@@ -254,6 +257,78 @@ namespace Clave5_Grupo6
                 }
             }
         }
+        private void InsertarReserva(Reserva reserva)
+        {
+            try
+            {
+                // Consulta SQL para insertar la reserva
+                string query = "INSERT INTO reservas (IdClientes, IdSala, FechaReserva, FechaInicio, FechaFin, MenuSeleccionado, CantidadAsistentes, Asistentes, TotalPago) " +
+                               "VALUES (@IdClientes, @IdSala, @FechaReserva, @FechaInicio, @FechaFin, @MenuSeleccionado, @CantidadAsistentes, @Asistentes, @TotalPago)";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
+                {
+                    // Parámetros para la consulta
+                    cmd.Parameters.AddWithValue("@IdClientes", reserva.Cliente.ID);
+                    cmd.Parameters.AddWithValue("@IdSala", reserva.Sala.ID);
+                    cmd.Parameters.AddWithValue("@FechaReserva", reserva.FechaReserva);
+                    cmd.Parameters.AddWithValue("@FechaInicio", reserva.FechaReserva.Add(reserva.HoraInicio));
+                    cmd.Parameters.AddWithValue("@FechaFin", reserva.FechaReserva.Add(reserva.HoraFin));
+                    cmd.Parameters.AddWithValue("@MenuSeleccionado", reserva.MenuSeleccionado);
+                    cmd.Parameters.AddWithValue("@CantidadAsistentes", reserva.CantidadAsistentes);
+                    cmd.Parameters.AddWithValue("@Asistentes", string.Join(",", reserva.Asistentes)); // Unir los asistentes en una cadena
+                    cmd.Parameters.AddWithValue("@TotalPago", reserva.TotalPago);
+
+                    // Abrir la conexión
+                    conexionBD.Open();
+                    // Ejecutar la consulta
+                    cmd.ExecuteNonQuery();
+                    // Confirmar el éxito
+                    MessageBox.Show("Reserva registrada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al insertar la reserva: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexionBD.State == ConnectionState.Open)
+                    conexionBD.Close();
+            }
+        }
+        private void ActualizarDisponibilidadSala(int idSala, DateTime fechaReserva, TimeSpan horaInicio, TimeSpan horaFin)
+        {
+            try
+            {
+                // Consulta SQL para actualizar la disponibilidad de la sala
+                string query = "UPDATE salas SET Disponibilidad = 0 WHERE IDSalas = @idSala " +
+                               "AND NOT EXISTS (SELECT 1 FROM reservas WHERE IdSala = @idSala AND FechaReserva = @fechaReserva " +
+                               "AND ((FechaInicio BETWEEN @horaInicio AND @horaFin) OR (FechaFin BETWEEN @horaInicio AND @horaFin)))";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
+                {
+                    // Parámetros de la consulta
+                    cmd.Parameters.AddWithValue("@idSala", idSala);
+                    cmd.Parameters.AddWithValue("@fechaReserva", fechaReserva.Date);
+                    cmd.Parameters.AddWithValue("@horaInicio", horaInicio);
+                    cmd.Parameters.AddWithValue("@horaFin", horaFin);
+
+                    // Abrir la conexión y ejecutar la actualización
+                    conexionBD.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar la disponibilidad de la sala: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (conexionBD.State == ConnectionState.Open)
+                    conexionBD.Close();
+            }
+        }
+
 
 
         private void CargarDatosSalas()
@@ -293,9 +368,6 @@ namespace Clave5_Grupo6
             {
                 MessageBox.Show("Error al cargar las salas: " + ex.Message);
             }
-
-
-
         }
 
         private void txtPersonas_KeyPress(object sender, KeyPressEventArgs e)
