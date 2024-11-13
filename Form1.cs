@@ -7,24 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient; //Para conectar la BD a Visual
+
+
 namespace Clave5_Grupo6
 {
     public partial class FormClientes : Form
 
     {
-        private List<string> asistentes;
 
         //Creacion de variables estaticas de clase 
-        static string Servidor = "localhost"; //Nombre del servidor de MySQL
-        static string BD = "clave5_grupodetrabajodb6"; //Nombre de la base de datos
-        static string Usuario = "root"; //Usuario de acceso a MySQL
-        static string Paswoord = "root"; //Contraseña de usuario de acceso a MySQL
-        //Crearemos la cadena de conexión concatenando las variables
+
+        static string Servidor = "localhost";               //Nombre del servidor de MySQL
+        static string BD = "clave5_grupodetrabajodb6";      //Nombre de la base de datos
+        static string Usuario = "root";                     //Usuario de acceso a MySQL
+        static string Paswoord = "root";                    //Contraseña de usuario de acceso a MySQL
+
+
+        //Cadena de conexión concatenando las variables
         static string cadenaConexion = "Database=" + BD + "; Data Source=" + Servidor + "; User Id = " + Usuario + "; Password=" + Paswoord + "";
 
         //Instancia para conexión a MySQL, recibe la cadena de conexión
         static MySqlConnection conexionBD = new MySqlConnection(cadenaConexion);
+
+        //Lista para captar los nombres de asistentes 
+        private List<string> asistentes;
 
         public FormClientes()
         {
@@ -32,14 +39,18 @@ namespace Clave5_Grupo6
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            CargarDatosSalas();
+            CargarDatosSalas();     //Muestra la informacion de Salasa
         }
+
+        //Botones 
+
+        /*Boton para poder comprobar la conexion a la base de datos */
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                conexionBD.Open(); //se abre la conexion de la variable global declara enla parte superior del formulario
-                MessageBox.Show("Conexión exitosa!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);// se manda un mensaje de estado de conexion
+                conexionBD.Open(); //se abre la conexion de la variable global declara en la parte superior del formulario
+                MessageBox.Show("Conexión exitosa!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);    // se manda un mensaje de estado de conexion
             }
             catch (Exception ex)
             {
@@ -51,15 +62,18 @@ namespace Clave5_Grupo6
             }
         }
 
-
+        //Boton para cerrar el Formulario de Registro Clientes 
         private void btnCerrar_Click(object sender, EventArgs e)
-        {   // Mostrar un cuadro de mensaje de confirmación con botones Yes y No
-            DialogResult resultado = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+        {   
+            DialogResult resultado = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmar sálida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.Yes)
             {
                 Application.Exit();
             }
         }
+            
+        //Boton para llamar a Formulario Reserva
         private void button2_Click(object sender, EventArgs e)
         {
             // Crear una nueva instancia del formulario 'Reservas'
@@ -71,6 +85,187 @@ namespace Clave5_Grupo6
             // Mostrar el formulario 'Reservas'
             reservasForm.Show();
         }
+
+        //Boton para realizar la Reservacion 
+        private void btnReserva_Click(object sender, EventArgs e)
+        {
+            // Variable para almacenar los mensajes de error
+            StringBuilder errores = new StringBuilder();
+
+            //Validacion de Datos Personales 
+
+            // Validación de nombre
+            if (string.IsNullOrWhiteSpace(txtClienteNombre.Text))
+            {
+                errores.AppendLine("El nombre no puede estar vacío.");
+            }
+
+            // Validación de apellido
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
+            {
+                errores.AppendLine("El apellido no puede estar vacío.");
+            }
+
+            // Validación de correo electrónico
+            if (string.IsNullOrWhiteSpace(txtCorreoel.Text))
+            {
+                errores.AppendLine("El correo electrónico no puede estar vacío.");
+            }
+            else if (!ValidarCorreo(txtCorreoel.Text))  // Validar el formato del correo
+            {
+                errores.AppendLine("Por favor ingrese un correo electrónico válido.");
+            }
+
+            // Validación de teléfono (MaskedTextBox)
+            if (string.IsNullOrWhiteSpace(TxtTelefonos.Text) || !TxtTelefonos.MaskFull)
+            {
+                errores.AppendLine("El teléfono debe estar completo y no puede estar vacío.");
+            }
+
+            // Validación de salas
+            if (cmbSalas.SelectedIndex == -1)  // Si no se ha seleccionado ninguna sala
+            {
+                errores.AppendLine("Por favor, selecciona una sala para realizar la reserva.");
+            }
+
+            // Validación de las fecha y horas
+            if (Fecha.Value.Date < DateTime.Now.Date)  // Fecha debe ser hoy o futura
+            {
+                errores.AppendLine("La fecha seleccionada no puede ser anterior a la fecha actual.");
+            }
+
+            if (HoraInicio.Value >= HoraFin.Value)  // La hora de inicio no puede ser mayor o igual a la hora de fin
+            {
+                errores.AppendLine("La hora de inicio no puede ser igual o mayor que la hora de fin.");
+            }
+
+            // Validación de la cantidad de personas
+
+            int totalPersona = 0;
+            if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
+            {
+                errores.AppendLine("Por favor, ingresa una cantidad válida de asistentes.");
+            }
+
+            //Validacion de Menú 
+
+            int menu1Personas = (int)numeric1.Value;
+            int menu2Personas = (int)numeric2.Value;
+            int menu3Personas = (int)numeric3.Value;
+
+            int totalSeleccionado = menu1Personas + menu2Personas + menu3Personas;
+
+            if (totalSeleccionado != totalPersona)  // Si la suma no es igual al total de personas
+            {
+                errores.AppendLine("La cantidad de personas que han elegido los menús no coincide con la cantidad total de personas que han sido ingresadas.");
+            }
+
+            // Si hay errores, mostramos todos
+
+            if (errores.Length > 0)
+            {
+                MessageBox.Show(errores.ToString(), "Errores de datos de entrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Si el error está en la cantidad de personas, borrar el dato y enfocar el campo
+                if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
+                {
+                    txtPersonas.Clear(); 
+                    txtPersonas.Focus();  
+                }
+                return;
+            }
+
+            // Crear la reserva con los datos del formulario
+
+            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
+            DateTime fechaReserva = Fecha.Value;
+            TimeSpan horaInicio = HoraInicio.Value.TimeOfDay;
+            TimeSpan horaFin = HoraFin.Value.TimeOfDay;
+
+            // Llamar a la función para verificar disponibilidad de salas
+            if (!ActualizarDisponibilidadSala(salaSeleccionada, fechaReserva, horaInicio, horaFin))
+            {
+                MessageBox.Show("La sala no está disponible en el horario seleccionado. Por favor, elija otro horario.");
+                return; // Detener el proceso si la sala está ocupada
+            }
+
+
+            // Crear el cliente con los datos ingresados
+            Cliente cliente = new Cliente(txtClienteNombre.Text, txtApellido.Text, txtCorreoel.Text, TxtTelefonos.Text);
+
+            // Insertar el cliente y obtener su ID
+            int clienteId = InsertarCliente(cliente);
+
+            // Verificar si el ID es válido
+            if (clienteId == -1)
+            {
+                MessageBox.Show("No se pudo insertar el cliente. La operación fue cancelada.");
+                return;
+            }
+
+            // Asignar el ID al cliente después de la inserción
+            cliente.ID = clienteId;
+
+            //Crear la cadena de los menús seleccionados
+            string menuSeleccionado = "";
+            if (menu1Personas > 0)
+            {
+                menuSeleccionado += $"Menú 1: {menu1Personas} persona(s)\n";
+            }
+            if (menu2Personas > 0)
+            {
+                menuSeleccionado += $"Menú 2: {menu2Personas} persona(s)\n";
+            }
+            if (menu3Personas > 0)
+            {
+                menuSeleccionado += $"Menú 3: {menu3Personas} persona(s)\n";
+            }
+
+            //Convertir la lista de asistentes a una cadena separada por comas
+
+            string asistentesString = string.Join(",", asistentes);  // Lista de asistentes convertida a una cadena
+
+            //Crear la reserva con los datos del formulario, incluyendo los menús seleccionados y los asistentes
+
+            Reserva reserva = new Reserva(
+                0,  // ID de la reserva 
+                cliente,  // El cliente recién insertado
+                new Sala(salaSeleccionada, clienteId, "", "", true, false, false, false),  // Sala seleccionada
+                fechaReserva,  // Fecha de la reserva
+                horaInicio,  // Hora de inicio
+                horaFin,  // Hora de fin
+                menuSeleccionado,  // Asignar la cadena de menús seleccionados
+                totalSeleccionado,  // Total de personas para todos los menús
+                asistentes  // Lista de asistentes
+            );
+
+            // Asignar precios a los menús según el número de personas que los seleccionaron
+            decimal precioMenu1 = 10.00m;  // Precio por persona para el Menú 1
+            decimal precioMenu2 = 12.00m;  // Precio por persona para el Menú 2
+            decimal precioMenu3 = 15.00m;  // Precio por persona para el Menú 3
+
+            decimal total = (menu1Personas * precioMenu1) + (menu2Personas * precioMenu2) + (menu3Personas * precioMenu3);
+
+            // Asignar el total calculado a la reserva
+            reserva.TotalPago = total;
+
+            // Mostrar el total en el txtTotal
+            txtTotal.Text = reserva.TotalPago.ToString("C");
+
+           // Verifica si el ID del cliente es válido antes de insertar la reserva
+            if (reserva.Cliente.ID == 0)
+            {
+                MessageBox.Show("Error: El cliente no tiene un ID válido.");
+                return;
+            }
+
+            InsertarReserva(reserva);
+
+            LimpiarFormulario();
+        }
+
+
+        //Validaciones 
 
         private void txtClienteNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -105,175 +300,16 @@ namespace Clave5_Grupo6
             return regex.IsMatch(correo);
         }
 
-
-        private void btnReserva_Click(object sender, EventArgs e)
+        private void txtPersonas_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Variable para almacenar los mensajes de error
-            StringBuilder errores = new StringBuilder();
-
-            // Validación de nombre
-            if (string.IsNullOrWhiteSpace(txtClienteNombre.Text))
+            // Permitir solo números enteros positivos
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8) // 8 es la tecla "Backspace"
             {
-                errores.AppendLine("El nombre no puede estar vacío.");
+                e.Handled = true;
             }
-
-            // Validación de apellido
-            if (string.IsNullOrWhiteSpace(txtApellido.Text))
-            {
-                errores.AppendLine("El apellido no puede estar vacío.");
-            }
-
-            // Validación de correo electrónico
-            if (string.IsNullOrWhiteSpace(txtCorreoel.Text))
-            {
-                errores.AppendLine("El correo electrónico no puede estar vacío.");
-            }
-            else if (!ValidarCorreo(txtCorreoel.Text))  // Validar el formato del correo
-            {
-                errores.AppendLine("Por favor ingrese un correo electrónico válido.");
-            }
-
-            // Validación de teléfono (MaskedTextBox)
-            if (string.IsNullOrWhiteSpace(TxtTelefonos.Text) || !TxtTelefonos.MaskFull)
-            {
-                errores.AppendLine("El teléfono debe estar completo y no puede estar vacío.");
-            }
-
-            // Validación de la selección de sala
-            if (cmbSalas.SelectedIndex == -1)  // Si no se ha seleccionado ninguna sala
-            {
-                errores.AppendLine("Por favor, selecciona una sala para realizar la reserva.");
-            }
-
-            // Validación de las fechas y horas
-            if (Fecha.Value.Date < DateTime.Now.Date)  // Fecha debe ser hoy o futura
-            {
-                errores.AppendLine("La fecha seleccionada no puede ser anterior a la fecha actual.");
-            }
-
-            if (HoraInicio.Value >= HoraFin.Value)  // La hora de inicio no puede ser mayor o igual a la hora de fin
-            {
-                errores.AppendLine("La hora de inicio no puede ser igual o mayor que la hora de fin.");
-            }
-
-            // Validación de la cantidad de personas
-            int totalPersona = 0;
-            if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
-            {
-                errores.AppendLine("Por favor, ingresa un número válido de personas.");
-            }
-
-            int menu1Personas = (int)numeric1.Value;
-            int menu2Personas = (int)numeric2.Value;
-            int menu3Personas = (int)numeric3.Value;
-
-            int totalSeleccionado = menu1Personas + menu2Personas + menu3Personas;
-
-            if (totalSeleccionado != totalPersona)  // Si la suma no es igual al total de personas
-            {
-                errores.AppendLine("La suma de las personas seleccionadas para los menús no coincide con la cantidad total de personas.");
-            }
-
-            // Si hay errores, mostramos todos
-
-            if (errores.Length > 0)
-            {
-                MessageBox.Show(errores.ToString(), "Errores de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Si el error está en la cantidad de personas, borrar el dato y enfocar el campo
-                if (string.IsNullOrWhiteSpace(txtPersonas.Text) || !int.TryParse(txtPersonas.Text, out totalPersona) || totalPersona <= 0)
-                {
-                    txtPersonas.Clear();  // Borrar el dato
-                    txtPersonas.Focus();  // Establecer el foco en el campo
-                }
-
-                return;
-            }
-
-
-            // Crear la reserva con los datos del formulario
-            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
-            DateTime fechaReserva = Fecha.Value;
-            TimeSpan horaInicio = HoraInicio.Value.TimeOfDay;
-            TimeSpan horaFin = HoraFin.Value.TimeOfDay;
-
-            // Llamar a la función para verificar disponibilidad
-            if (!ActualizarDisponibilidadSala(salaSeleccionada, fechaReserva, horaInicio, horaFin))
-            {
-                MessageBox.Show("La sala no está disponible en el horario seleccionado. Por favor, elija otro horario.");
-                return; // Detener el proceso si la sala está ocupada
-            }
-
-
-            // Crear el cliente con los datos ingresados
-            Cliente cliente = new Cliente(txtClienteNombre.Text, txtApellido.Text, txtCorreoel.Text, TxtTelefonos.Text);
-
-            // Insertar el cliente y obtener su ID
-            int clienteId = InsertarCliente(cliente);
-
-            // Verificar si el ID es válido
-            if (clienteId == -1)
-            {
-                MessageBox.Show("No se pudo insertar el cliente. La operación fue cancelada.");
-                return;
-            }
-
-            // Asignar el ID al cliente después de la inserción
-            cliente.ID = clienteId;
-
-            // Paso 1.1: Crear la cadena de los menús seleccionados
-            string menuSeleccionado = "";
-            if (menu1Personas > 0)
-            {
-                menuSeleccionado += $"Menú 1: {menu1Personas} persona(s)\n";
-            }
-            if (menu2Personas > 0)
-            {
-                menuSeleccionado += $"Menú 2: {menu2Personas} persona(s)\n";
-            }
-            if (menu3Personas > 0)
-            {
-                menuSeleccionado += $"Menú 3: {menu3Personas} persona(s)\n";
-            }
-
-            // Paso 1.2: Convertir la lista de asistentes a una cadena separada por comas
-            string asistentesString = string.Join(",", asistentes);  // Lista de asistentes convertida a una cadena
-
-            // Paso 2: Crear la reserva con los datos del formulario, incluyendo los menús seleccionados y los asistentes
-            Reserva reserva = new Reserva(
-                0,  // ID de la reserva (aún no generado)
-                cliente,  // El cliente recién insertado
-                new Sala(salaSeleccionada, clienteId, "", "", true, false, false, false),  // Sala seleccionada
-                fechaReserva,  // Fecha de la reserva
-                horaInicio,  // Hora de inicio
-                horaFin,  // Hora de fin
-                menuSeleccionado,  // Asignar la cadena de menús seleccionados
-                totalSeleccionado,  // Total de personas para todos los menús
-                asistentes  // Lista de asistentes
-            );
-
-            // Asignar precios a los menús según el número de personas que los seleccionaron
-            decimal precioMenu1 = 10.00m;  // Precio por persona para el Menú 1
-            decimal precioMenu2 = 12.00m;  // Precio por persona para el Menú 2
-            decimal precioMenu3 = 15.00m;  // Precio por persona para el Menú 3
-
-            decimal total = (menu1Personas * precioMenu1) + (menu2Personas * precioMenu2) + (menu3Personas * precioMenu3);
-
-            // Asignar el total calculado a la reserva
-            reserva.TotalPago = total;
-
-            // Mostrar el total en el txtTotal
-            txtTotal.Text = reserva.TotalPago.ToString("C"); // Formatear como moneda, por ejemplo
-            // Verifica si el ID del cliente es válido antes de insertar la reserva
-             if (reserva.Cliente.ID == 0)
-            {
-                MessageBox.Show("Error: El cliente no tiene un ID válido.");
-                return;
-            }
-
-            InsertarReserva(reserva);
-
-            LimpiarFormulario();
         }
+
+        //Metodos necesarios 
 
         private int InsertarCliente(Cliente cliente)
         {
@@ -351,8 +387,10 @@ namespace Clave5_Grupo6
 
                     // Abrir la conexión
                     conexionBD.Open();
+
                     // Ejecutar la consulta
                     cmd.ExecuteNonQuery();
+
                     // Confirmar el éxito
                     MessageBox.Show("Reserva registrada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -372,19 +410,13 @@ namespace Clave5_Grupo6
             try
             {
                 // Convertir TimeSpan a DateTime (solo para la hora, conservando la fecha original)
+
                 DateTime fechaHoraInicio = fechaReserva.Date.Add(horaInicio);  // Combina la fecha con la hora de inicio
                 DateTime fechaHoraFin = fechaReserva.Date.Add(horaFin);  // Combina la fecha con la hora de fin
 
-                // Consulta SQL ajustada para verificar el solapamiento de horas
-                string query = @"
-        SELECT COUNT(*) 
-        FROM reservas 
-        WHERE IdSala = @idSala 
-          AND FechaReserva = @fechaReserva 
-          AND (
-              -- El rango de la nueva reserva se solapa con alguna reserva existente
-              (FechaInicio < @horaFin AND FechaFin > @horaInicio)
-          )";
+                // Consulta SQL ajustada para verificar horas
+                string query = @"SELECT COUNT(*)FROM reservas WHERE IdSala = @idSala AND FechaReserva = @fechaReserva 
+          AND ( -- El rango de la nueva reserva se solapa con alguna reserva existente (FechaInicio < @horaFin AND FechaFin > @horaInicio))";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
                 {
@@ -402,7 +434,7 @@ namespace Clave5_Grupo6
                         // Ejecutar la consulta
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        // Si count > 0, significa que hay una reserva que se solapa con el horario
+                        // Si count > 0, significa que hay una reserva con horario ocupado 
                         return count == 0;  // Si no hay solapamiento, devolver true
                     }
                 }
@@ -427,7 +459,7 @@ namespace Clave5_Grupo6
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
 
-                // Llenar el DataTable con los datos de las salas
+                // Llenar el DataGridView con los datos de las salas
                 da.Fill(dt);
 
                 // Llenar el ComboBox con los números de las salas (1, 2, 3)
@@ -439,10 +471,9 @@ namespace Clave5_Grupo6
                 }
 
                 // Llenar el DataGridView con los datos de todas las salas
-                // No necesitamos hacer conversiones adicionales, solo cargar los datos tal cual están en la base de datos
                 InfoSalas.DataSource = dt;
 
-                // Ajustar el tamaño de las columnas automáticamente (este es el paso clave)
+                // Ajustar el tamaño de las columnas automáticamente 
                 InfoSalas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
                 // Ajustar el tamaño de las filas automáticamente
@@ -454,16 +485,7 @@ namespace Clave5_Grupo6
             }
         }
 
-        private void txtPersonas_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Permitir solo números enteros positivos
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8) // 8 es la tecla "Backspace"
-            {
-                e.Handled = true;
-            }
-        }
-
-
+      
         // Método para obtener la capacidad de la sala seleccionada desde la base de datos
         private int ObtenerCapacidadSala(int idSala)
         {
@@ -475,7 +497,7 @@ namespace Clave5_Grupo6
             try
             {
                 conexionBD.Open();
-                object result = cmd.ExecuteScalar(); // Obtener solo un valor (la capacidad)
+                object result = cmd.ExecuteScalar(); // Obtener la capacidad
                 return result != null ? Convert.ToInt32(result) : 0;
             }
             catch (Exception ex)
@@ -525,7 +547,7 @@ namespace Clave5_Grupo6
 
             for (int i = 0; i < cantidadPersonas; i++)
             {
-                string nombreAsistente = Microsoft.VisualBasic.Interaction.InputBox($"Ingrese el nombre del asistente {i + 1}:", "Nombre del Asistente", "");
+                string nombreAsistente = Microsoft.VisualBasic.Interaction.InputBox($"Ingrese el nombre del asistente {i + 1}:", "Asistentes", "");
 
                 // Validar que el nombre no esté vacío y que solo contenga letras y acentos
                 if (string.IsNullOrWhiteSpace(nombreAsistente) || !nombreAsistente.All(c => Char.IsLetter(c) || "áéíóúÁÉÍÓÚñÑ".Contains(c)))
@@ -569,7 +591,6 @@ namespace Clave5_Grupo6
             // Limpiar ListBox 
             asistentes.Clear();
 
-            // Si tienes otros controles que necesiten reiniciarse, agrégales aquí
         }
     }
 }
