@@ -415,8 +415,12 @@ namespace Clave5_Grupo6
                 DateTime fechaHoraFin = fechaReserva.Date.Add(horaFin);  // Combina la fecha con la hora de fin
 
                 // Consulta SQL ajustada para verificar horas
-                string query = @"SELECT COUNT(*)FROM reservas WHERE IdSala = @idSala AND FechaReserva = @fechaReserva 
-          AND ( -- El rango de la nueva reserva se solapa con alguna reserva existente (FechaInicio < @horaFin AND FechaFin > @horaInicio))";
+                string query = @"SELECT COUNT(*) 
+                 FROM reservas 
+                 WHERE IdSala = @idSala 
+                 AND ((FechaReserva = @fechaReserva 
+                       AND (FechaInicio < @horaFin AND FechaFin > @horaInicio)) 
+                      OR FechaReserva > @fechaReserva)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
                 {
