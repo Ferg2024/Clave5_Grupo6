@@ -190,6 +190,20 @@ namespace Clave5_Grupo6
             }
 
 
+            // Crear la reserva con los datos del formulario
+            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
+            DateTime fechaReserva = Fecha.Value;
+            TimeSpan horaInicio = HoraInicio.Value.TimeOfDay;
+            TimeSpan horaFin = HoraFin.Value.TimeOfDay;
+
+            // Llamar a la función para verificar disponibilidad
+            if (!ActualizarDisponibilidadSala(salaSeleccionada, fechaReserva, horaInicio, horaFin))
+            {
+                MessageBox.Show("La sala no está disponible en el horario seleccionado. Por favor, elija otro horario.");
+                return; // Detener el proceso si la sala está ocupada
+            }
+
+
             // Crear el cliente con los datos ingresados
             Cliente cliente = new Cliente(txtClienteNombre.Text, txtApellido.Text, txtCorreoel.Text, TxtTelefonos.Text);
 
@@ -206,15 +220,8 @@ namespace Clave5_Grupo6
             // Asignar el ID al cliente después de la inserción
             cliente.ID = clienteId;
 
-
-            // Crear la reserva con los datos del formulario
-            int salaSeleccionada = Convert.ToInt32(cmbSalas.SelectedItem);
-            DateTime fechaReserva = Fecha.Value;
-            TimeSpan horaInicio = HoraInicio.Value.TimeOfDay;
-            TimeSpan horaFin = HoraFin.Value.TimeOfDay;
-
             // Paso 1.1: Crear la cadena de los menús seleccionados
-              string menuSeleccionado = "";
+            string menuSeleccionado = "";
             if (menu1Personas > 0)
             {
                 menuSeleccionado += $"Menú 1: {menu1Personas} persona(s)\n";
@@ -265,6 +272,7 @@ namespace Clave5_Grupo6
 
             InsertarReserva(reserva);
 
+            LimpiarFormulario();
         }
 
         private int InsertarCliente(Cliente cliente)
@@ -359,40 +367,53 @@ namespace Clave5_Grupo6
                     conexionBD.Close();
             }
         }
-        private void ActualizarDisponibilidadSala(int idSala, DateTime fechaReserva, TimeSpan horaInicio, TimeSpan horaFin)
+        private bool ActualizarDisponibilidadSala(int idSala, DateTime fechaReserva, TimeSpan horaInicio, TimeSpan horaFin)
         {
             try
             {
-                // Consulta SQL para actualizar la disponibilidad de la sala
-                string query = "UPDATE salas SET Disponibilidad = 0 WHERE IDSalas = @idSala " +
-                               "AND NOT EXISTS (SELECT 1 FROM reservas WHERE IdSala = @idSala AND FechaReserva = @fechaReserva " +
-                               "AND ((FechaInicio BETWEEN @horaInicio AND @horaFin) OR (FechaFin BETWEEN @horaInicio AND @horaFin)))";
+                // Convertir TimeSpan a DateTime (solo para la hora, conservando la fecha original)
+                DateTime fechaHoraInicio = fechaReserva.Date.Add(horaInicio);  // Combina la fecha con la hora de inicio
+                DateTime fechaHoraFin = fechaReserva.Date.Add(horaFin);  // Combina la fecha con la hora de fin
+
+                // Consulta SQL ajustada para verificar el solapamiento de horas
+                string query = @"
+        SELECT COUNT(*) 
+        FROM reservas 
+        WHERE IdSala = @idSala 
+          AND FechaReserva = @fechaReserva 
+          AND (
+              -- El rango de la nueva reserva se solapa con alguna reserva existente
+              (FechaInicio < @horaFin AND FechaFin > @horaInicio)
+          )";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, conexionBD))
                 {
                     // Parámetros de la consulta
                     cmd.Parameters.AddWithValue("@idSala", idSala);
-                    cmd.Parameters.AddWithValue("@fechaReserva", fechaReserva.Date);
-                    cmd.Parameters.AddWithValue("@horaInicio", horaInicio);
-                    cmd.Parameters.AddWithValue("@horaFin", horaFin);
+                    cmd.Parameters.AddWithValue("@fechaReserva", fechaReserva.Date);  // Solo la fecha sin la hora
+                    cmd.Parameters.AddWithValue("@horaInicio", fechaHoraInicio);  // Usamos DateTime con hora
+                    cmd.Parameters.AddWithValue("@horaFin", fechaHoraFin);  // Usamos DateTime con hora
 
-                    // Abrir la conexión y ejecutar la actualización
-                    conexionBD.Open();
-                    cmd.ExecuteNonQuery();
+                    // Abrir la conexión
+                    using (conexionBD)  // Usar 'using' para asegurar que la conexión se cierre automáticamente
+                    {
+                        conexionBD.Open();
+
+                        // Ejecutar la consulta
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        // Si count > 0, significa que hay una reserva que se solapa con el horario
+                        return count == 0;  // Si no hay solapamiento, devolver true
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar la disponibilidad de la sala: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (conexionBD.State == ConnectionState.Open)
-                    conexionBD.Close();
+                // Mostrar mensaje de error si hay un problema al verificar la disponibilidad
+                MessageBox.Show("Error al verificar la disponibilidad de la sala: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
-
-
 
         private void CargarDatosSalas()
         {
@@ -519,6 +540,36 @@ namespace Clave5_Grupo6
 
             MessageBox.Show("La lista de asistentes se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        } 
+        }
+
+
+        private void LimpiarFormulario()
+        {
+            // Limpiar los TextBox
+            txtClienteNombre.Clear();
+            txtApellido.Clear();
+            txtCorreoel.Clear();
+            TxtTelefonos.Clear();
+            txtPersonas.Clear();
+            txtTotal.Clear();
+
+            // Limpiar ComboBox
+            cmbSalas.SelectedIndex = -1;
+
+            // Limpiar DateTimePicker
+            Fecha.Value = DateTime.Now;
+            HoraInicio.Value = DateTime.Now;
+            HoraFin.Value = DateTime.Now;
+
+            // Limpiar NumericUpDown
+            numeric1.Value = 0;
+            numeric2.Value = 0;
+            numeric3.Value = 0;
+
+            // Limpiar ListBox 
+            asistentes.Clear();
+
+            // Si tienes otros controles que necesiten reiniciarse, agrégales aquí
+        }
     }
 }
