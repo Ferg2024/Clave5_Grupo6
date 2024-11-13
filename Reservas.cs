@@ -64,33 +64,7 @@ namespace Clave5_Grupo6
         private void btnBuscar_Click(object sender, EventArgs e)
         {
           
-                //Inicializa una nueva instancia de la clase MySqlCommand.
-                MySqlCommand consulta = new MySqlCommand();
-                conexionBD.Open(); //se abre la conexion de la variable declarada en la superior del formulario
-
-                //Instancia para conexión a MySQL, recibe la cadena de conexión
-                consulta.Connection = conexionBD;
-                consulta.CommandText = ("select * from clientes");
-
-                try
-                {
-                    
-                //Inicializa una nueva instancia de la clase MySqlDataAdapter con
-                //el MySqlCommand especificado como propiedad SelectCommand.
-                    MySqlDataAdapter adaptadorMySQL = new MySqlDataAdapter();
-                    adaptadorMySQL.SelectCommand = consulta;
-                    DataTable tabla = new DataTable();
-                    adaptadorMySQL.Fill(tabla);
-                    MostrarReservas.DataSource = tabla;
-                }
-                catch (MySqlException ex) //manejo de excepciones MySQL
-                {
-                    MessageBox.Show("Error: " + ex);
-                }
-                finally
-                {
-                    conexionBD.Close();
-                }
+                
 
         }
 
@@ -107,10 +81,11 @@ namespace Clave5_Grupo6
                 MySqlDataAdapter adaptadorMySQL = new MySqlDataAdapter();
                 adaptadorMySQL.SelectCommand = consulta;
                 DataTable tabla = new DataTable();
+
                 adaptadorMySQL.Fill(tabla); //ejecutar el DELETE
-                MessageBox.Show("elemento eliminado!!");
+                MessageBox.Show("Elemento eliminado!!");
                 //SE CONSULTA LA TABLA NUEVAMENTE
-                consulta.CommandText = ("select * from cliente"); //realizar una consulta de la tabla
+                consulta.CommandText = ("select * from clientes"); //realizar una consulta de la tabla
                 adaptadorMySQL.Fill(tabla);
                 MostrarReservas.DataSource = tabla;
             }
@@ -122,7 +97,38 @@ namespace Clave5_Grupo6
             {
                 conexionBD.Close();
             }
-        } //Fin botón eliminar
-    
+            //Fin botón eliminar
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            //Inicializa una nueva instancia de la clase MySqlCommand.
+            MySqlCommand consulta = new MySqlCommand();
+            conexionBD.Open(); //se abre la conexion de la variable declarada en la superior del formulario
+
+            //Instancia para conexión a MySQL, recibe la cadena de conexión
+            consulta.Connection = conexionBD;
+            consulta.CommandText = ("select * from clientes");
+
+            try
+            {
+
+                //Inicializa una nueva instancia de la clase MySqlDataAdapter con
+                //el MySqlCommand especificado como propiedad SelectCommand.
+                MySqlDataAdapter adaptadorMySQL = new MySqlDataAdapter();
+                adaptadorMySQL.SelectCommand = consulta;
+                DataTable tabla = new DataTable();
+                adaptadorMySQL.Fill(tabla);
+                MostrarReservas.DataSource = tabla;
+            }
+            catch (MySqlException ex) //manejo de excepciones MySQL
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+            finally
+            {
+                conexionBD.Close();
+            }
+        }
     }
 }
