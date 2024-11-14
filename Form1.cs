@@ -9,6 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Para conectar la BD a Visual
 
+// Autor: Ferdinand Gerard González Sánchez GS24015
+//Fecha: 11 Noviembre 2024
+//Ciclo: II
+//PRN115
+//Grupo de Aula: 02
+//Grupo de Trabajo: 06
+//Clave: 5
+//Problema: Sistema que gestona reservas de Salas 
 
 namespace Clave5_Grupo6
 {
